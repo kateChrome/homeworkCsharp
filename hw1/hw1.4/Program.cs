@@ -39,11 +39,11 @@ namespace Task4
             int step = 0;
             int sizeOfCurrentLine = 0;
             Directions currentDirection = Directions.Up;
-            int k = 0;
+            int counter = 0;
             int firstIndex = size / 2;
             int secondIndex = size / 2;
             Console.Write(array[firstIndex, secondIndex] + " ");
-            while (k < size * size)
+            while (counter < size * size)
             {
                 if (isFinish)
                 {
@@ -59,8 +59,8 @@ namespace Task4
                     {
                         firstIndex--;
                         Console.Write(array[firstIndex, secondIndex] + " ");
-                        k++;
-                        if (k == size * size - 1) { isFinish = true; break; }
+                        counter++;
+                        if (counter == size * size - 1) { isFinish = true; break; }
                     }
                     currentDirection = Directions.Left;
                     step++;
@@ -72,8 +72,8 @@ namespace Task4
                     {
                         secondIndex--;
                         Console.Write(array[firstIndex, secondIndex] + " ");
-                        k++;
-                        if (k == size * size - 1)
+                        counter++;
+                        if (counter == size * size - 1)
                         {
                             isFinish = true;
                             break;
@@ -89,8 +89,8 @@ namespace Task4
                     {
                         firstIndex++;
                         Console.Write(array[firstIndex, secondIndex] + " ");
-                        k++;
-                        if (k == size * size - 1)
+                        counter++;
+                        if (counter == size * size - 1)
                         {
                             isFinish = true;
                             break;
@@ -106,8 +106,8 @@ namespace Task4
                     {
                         secondIndex++;
                         Console.Write(array[firstIndex, secondIndex] + " ");
-                        k++;
-                        if (k == size * size - 1)
+                        counter++;
+                        if (counter == size * size - 1)
                         {
                             isFinish = true;
                             break;
