@@ -1,0 +1,11 @@
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4.deps.json
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4.runtimeconfig.json
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4.runtimeconfig.dev.json
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4.dll
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/bin/Debug/netcoreapp3.1/hw1.4.pdb
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/obj/Debug/netcoreapp3.1/hw1.4.csprojAssemblyReference.cache
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/obj/Debug/netcoreapp3.1/hw1.4.AssemblyInfoInputs.cache
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/obj/Debug/netcoreapp3.1/hw1.4.AssemblyInfo.cs
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/obj/Debug/netcoreapp3.1/hw1.4.dll
+/home/kat3chrome/study/programming/homeworkCsharp/hw1/hw1.4/obj/Debug/netcoreapp3.1/hw1.4.pdb
