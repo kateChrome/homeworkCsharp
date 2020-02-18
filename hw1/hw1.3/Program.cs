@@ -5,15 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 public class ArraySort
 {
+    static int[] BubbleSort(int[] array)
+    {
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            for (int j = 0; j < array.Length - i - 1; j++)
+            {
+                if (array[j + 1] > array[j])
+                {
+                    int temporary = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temporary;
+                }
+            }
+        }
+        return array;
+    }
+
     public static void Main(string[] args)
     {
-        int sizeOfArray;
-        Console.Write("Enter the number of elements: ");
-        sizeOfArray = int.Parse(Console.ReadLine());
         Console.Write("Enter values of array: ");
         var inputArray = Console.ReadLine().Split().Select(int.Parse).ToArray();
-        
-        Array.Sort(inputArray);
+
+        inputArray = BubbleSort(inputArray);
         Console.Write("Sorted array: ");
         Console.WriteLine(String.Join(" ", inputArray));
     }
