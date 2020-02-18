@@ -8,11 +8,32 @@ namespace hw1._5
 {
     class Program
     {
+        static int[,] sortMatrixByFirstElement(int[,] inputArray, int numberOflines, int sizeOfLine)
+        {
+            for (int i = 0; i < sizeOfLine; i++)
+            {
+                for (int j = 0; j < sizeOfLine - i - 1; j++)
+                {
+                    if (inputArray[0, j] < inputArray[0, j + 1])
+                    {
+                        for (int k = 0; k < numberOflines; k++)
+                        {
+                            int temporaryVariable = inputArray[k, j];
+                            inputArray[k, j] = inputArray[k, j + 1];
+                            inputArray[k, j + 1] = temporaryVariable;
+                        }
+                    }
+                }
+            }
+
+            return inputArray;
+        }
+
         static void Main(string[] args)
         {
             Console.Write("Enter the number of lines: ");
             int numberOflines = int.Parse(Console.ReadLine());
-            Console.Write("Enter the number of size of line: ");
+            Console.Write("Enter the size of line: ");
             int sizeOfLine = int.Parse(Console.ReadLine());
 
             int[,] inputArray = new int[numberOflines, sizeOfLine];
@@ -28,28 +49,14 @@ namespace hw1._5
                 }
             }
 
-            for (int i = 0; i < sizeOfLine; i++)
-            {
-                for (int j = 0; j < sizeOfLine - 1; j++)
-                {
-                    if (inputArray[0, j] < inputArray[0, j + 1])
-                    {
-                        for (int k = 0; k < numberOflines; k++)
-                        {
-                            int temporaryVariable = inputArray[k, j];
-                            inputArray[k, j] = inputArray[k, j + 1];
-                            inputArray[k, j + 1] = temporaryVariable;
-                        }
-                    }
-                }
-            }
+            inputArray = sortMatrixByFirstElement(inputArray, numberOflines, sizeOfLine);
 
             Console.WriteLine("Sorted matrix:");
             for (int i = 0; i < numberOflines; i++)
             {
                 for (int j = 0; j < sizeOfLine; j++)
                 {
-                    Console.Write(inputArray[i, j] + " ");
+                    Console.Write($"{inputArray[i, j]} ");
                 }
                 Console.Write(Environment.NewLine);
             }
