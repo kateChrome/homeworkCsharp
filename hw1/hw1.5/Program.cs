@@ -51,6 +51,7 @@ namespace hw1._5
                 Console.Write(Environment.NewLine);
             }
         }
+        
         static void Main(string[] args)
         {
             Console.Write("Enter the number of lines: ");
@@ -65,7 +66,6 @@ namespace hw1._5
 
             Console.WriteLine("Sorted matrix:");
             PrintMatrix(inputArray);
-
         }
     }
 }
