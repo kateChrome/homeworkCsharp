@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "/home/kat3chrome/.dotnet/store/|arch|/|tfm|",
-      "/home/kat3chrome/.nuget/packages"
-    ]
-  }
-}
