@@ -11,11 +11,104 @@ namespace Task4
         Left,
         Right
     }
+
     class Program
     {
+        static void PrintMatrixByRule(int[,] array)
+        {
+            bool isFinish = false;
+            int step = 0;
+            int sizeOfCurrentLine = 0;
+            Directions currentDirection = Directions.Up;
+            int counter = 0;
+            int firstIndex = array.GetLength(0) / 2;
+            int secondIndex = array.GetLength(0) / 2;
+
+            Console.Write(array[firstIndex, secondIndex] + " ");
+
+            while (counter < array.GetLength(0) * array.GetLength(0))
+            {
+                if (isFinish)
+                {
+                    break;
+                }
+                if (step % 2 == 0)
+                {
+                    sizeOfCurrentLine++;
+                }
+                if (currentDirection == Directions.Up)
+                {
+                    for (int t = 0; t < sizeOfCurrentLine; t++)
+                    {
+                        firstIndex--;
+                        Console.Write(array[firstIndex, secondIndex] + " ");
+                        counter++;
+                        if (counter == array.GetLength(0) * array.GetLength(0) - 1)
+                        {
+                            isFinish = true;
+                            break;
+                        }
+                    }
+                    currentDirection = Directions.Left;
+                    step++;
+                    continue;
+                }
+                if (currentDirection == Directions.Left)
+                {
+                    for (int t = 0; t < sizeOfCurrentLine; t++)
+                    {
+                        secondIndex--;
+                        Console.Write(array[firstIndex, secondIndex] + " ");
+                        counter++;
+                        if (counter == array.GetLength(0) * array.GetLength(0) - 1)
+                        {
+                            isFinish = true;
+                            break;
+                        }
+                    }
+                    currentDirection = Directions.Down;
+                    step++;
+                    continue;
+                }
+                if (currentDirection == Directions.Down)
+                {
+                    for (int t = 0; t < sizeOfCurrentLine; t++)
+                    {
+                        firstIndex++;
+                        Console.Write(array[firstIndex, secondIndex] + " ");
+                        counter++;
+                        if (counter == array.GetLength(0) * array.GetLength(0) - 1)
+                        {
+                            isFinish = true;
+                            break;
+                        }
+                    }
+                    currentDirection = Directions.Right;
+                    step++;
+                    continue;
+                }
+                if (currentDirection == Directions.Right)
+                {
+                    for (int t = 0; t < sizeOfCurrentLine; t++)
+                    {
+                        secondIndex++;
+                        Console.Write(array[firstIndex, secondIndex] + " ");
+                        counter++;
+                        if (counter == array.GetLength(0) * array.GetLength(0) - 1)
+                        {
+                            isFinish = true;
+                            break;
+                        }
+                    }
+                    currentDirection = Directions.Up;
+                    step++;
+                    continue;
+                }
+            }
+        }
         static void Main(string[] args)
         {
-            int size = 1;
+            int size;
             do
             {
                 Console.Write("Enter size of array: ");
@@ -35,89 +128,7 @@ namespace Task4
                 }
             }
 
-            bool isFinish = false;
-            int step = 0;
-            int sizeOfCurrentLine = 0;
-            Directions currentDirection = Directions.Up;
-            int counter = 0;
-            int firstIndex = size / 2;
-            int secondIndex = size / 2;
-            Console.Write(array[firstIndex, secondIndex] + " ");
-            while (counter < size * size)
-            {
-                if (isFinish)
-                {
-                    break;
-                }
-                if (step % 2 == 0)
-                {
-                    sizeOfCurrentLine++;
-                }
-                if (currentDirection == Directions.Up)
-                {
-                    for (int t = 0; t < sizeOfCurrentLine; t++)
-                    {
-                        firstIndex--;
-                        Console.Write(array[firstIndex, secondIndex] + " ");
-                        counter++;
-                        if (counter == size * size - 1) { isFinish = true; break; }
-                    }
-                    currentDirection = Directions.Left;
-                    step++;
-                    continue;
-                }
-                if (currentDirection == Directions.Left)
-                {
-                    for (int t = 0; t < sizeOfCurrentLine; t++)
-                    {
-                        secondIndex--;
-                        Console.Write(array[firstIndex, secondIndex] + " ");
-                        counter++;
-                        if (counter == size * size - 1)
-                        {
-                            isFinish = true;
-                            break;
-                        }
-                    }
-                    currentDirection = Directions.Down;
-                    step++;
-                    continue;
-                }
-                if (currentDirection == Directions.Down)
-                {
-                    for (int t = 0; t < sizeOfCurrentLine; t++)
-                    {
-                        firstIndex++;
-                        Console.Write(array[firstIndex, secondIndex] + " ");
-                        counter++;
-                        if (counter == size * size - 1)
-                        {
-                            isFinish = true;
-                            break;
-                        }
-                    }
-                    currentDirection = Directions.Right;
-                    step++;
-                    continue;
-                }
-                if (currentDirection == Directions.Right)
-                {
-                    for (int t = 0; t < sizeOfCurrentLine; t++)
-                    {
-                        secondIndex++;
-                        Console.Write(array[firstIndex, secondIndex] + " ");
-                        counter++;
-                        if (counter == size * size - 1)
-                        {
-                            isFinish = true;
-                            break;
-                        }
-                    }
-                    currentDirection = Directions.Up;
-                    step++;
-                    continue;
-                }
-            }
+            PrintMatrixByRule(array);
         }
     }
 }
