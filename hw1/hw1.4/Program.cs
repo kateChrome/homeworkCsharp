@@ -14,7 +14,7 @@ namespace Task4
 
     class Program
     {
-        static void PrintMatrixByRule(int[,] array)
+        private static void PrintMatrixByRule(int[,] array)
         {
             bool isFinish = false;
             int step = 0;
@@ -106,6 +106,7 @@ namespace Task4
                 }
             }
         }
+
         static void Main(string[] args)
         {
             int size;
@@ -116,15 +117,15 @@ namespace Task4
             } while (size % 2 != 1);
 
             Console.WriteLine("Enter array line by line: ");
-            string[] line_array;
+            string[] lineArray;
             int[,] array = new int[size, size];
             for (int i = 0; i < size; i++)
             {
-                line_array = Console.ReadLine().Split(' ');
+                lineArray = Console.ReadLine().Split(' ');
 
                 for (int j = 0; j < size; j++)
                 {
-                    array[i, j] = Convert.ToInt32(line_array[j]);
+                    array[i, j] = Convert.ToInt32(lineArray[j]);
                 }
             }
 
