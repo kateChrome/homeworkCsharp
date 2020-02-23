@@ -18,7 +18,7 @@ namespace hw2._1
         public List() { Head = null; }
         public List(int Data) { Head = new Node(Data); }
 
-        public void addNodeToEnd(int data)
+        public void append(int data)
         {
             Node newNode = new Node(data);
 
@@ -57,9 +57,13 @@ namespace hw2._1
             currentNode.Next = null;
         }
 
-        public void addElementByIndex(int data, int index)
+        public void insert(int data, int index)
         {
-            if (Head == null && index != 0)
+            if (index < 0)
+            {
+                return;
+            }
+            else if (Head == null && index != 0)
             {
                 return;
             }
@@ -92,7 +96,7 @@ namespace hw2._1
 
         public void removeNodeByIndex(int index)
         {
-            if (Head == null)
+            if (Head == null && index < 0)
             {
                 return;
             }
@@ -110,12 +114,84 @@ namespace hw2._1
                 }
                 currentNode = currentNode.Next;
             }
-            
+
             if (currentNode.Next == null)
             {
                 return;
             }
             currentNode.Next = currentNode.Next.Next;
+        }
+
+        public bool isEmpty()
+        {
+            return (Head == null);
+        }
+
+        public int getSize()
+        {
+            if (isEmpty())
+            {
+                return 0;
+            }
+
+            int size = 1;
+            Node currentNode = Head;
+            while (currentNode.Next != null)
+            {
+                currentNode = currentNode.Next;
+                size++;
+            }
+            return size;
+        }
+
+        public int? getDataOfNodeByIndex(int index)
+        {
+            if (index < 0 || Head == null)
+            {
+                return null;
+            }
+            if (index == 0)
+            {
+                return Head.Data;
+            }
+
+            Node currentNode = Head;
+            for (int i = 0; i < index; i++)
+            {
+                if (currentNode.Next == null)
+                {
+                    return null;
+                }
+                currentNode = currentNode.Next;
+            }
+            return currentNode.Data;
+        }
+
+        public void setDataOfNodeByIndex(int data, int index)
+        {
+            if (index < 0)
+            {
+                return;
+            }
+            else if (Head == null && index == 0)
+            {
+                Head = new Node(data);
+            }
+            else if (Head == null && index != 0)
+            {
+                return;
+            }
+
+            Node currentNode = Head;
+            for (int i = 0; i < index; i++)
+            {
+                if (currentNode.Next == null)
+                {
+                    return;
+                }
+                currentNode = currentNode.Next;
+            }
+            currentNode.Data = data;
         }
         public void printList()
         {
@@ -143,12 +219,13 @@ namespace hw2._1
         static void Main(string[] args)
         {
             List list = new List();
-            list.addNodeToEnd(10);
-            list.addNodeToEnd(11);
-            list.addNodeToEnd(13);
-            list.addNodeToEnd(100);
-            list.addElementByIndex(1000, 2);
-            list.removeNodeByIndex(5);
+            list.append(10);
+            list.append(11);
+            list.append(13);
+            list.append(100);
+            list.insert(1000, 2);
+            list.printList();
+            list.setDataOfNodeByIndex(100001,5);
             list.printList();
         }
     }
