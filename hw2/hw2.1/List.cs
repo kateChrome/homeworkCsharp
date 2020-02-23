@@ -1,212 +1,194 @@
 using System;
 
-namespace hw2._1
+namespace hwTwoDotOne
 {
-    public class Node
-    {
-        public int Data;
-        public Node Next;
-
-        public Node(int data) { Data = data; Next = null; }
-
-    }
-
     public class List
     {
-        public Node Head;
-
-        public List() { Head = null; }
-        public List(int Data) { Head = new Node(Data); }
-
-        public void append(int data)
+        private class Node
         {
-            Node newNode = new Node(data);
+            public int data;
+            public Node next;
 
-            if (Head == null)
-            {
-                Head = newNode;
-                return;
-            }
-
-            Node currentNode = Head;
-            while (currentNode.Next != null)
-            {
-                currentNode = currentNode.Next;
-            }
-            currentNode.Next = newNode;
+            public Node(int data) { this.data = data; next = null; }
+            public Node(int data, Node next) { this.data = data; this.next = next; }
         }
 
-        public void removeNodeFromEnd()
+        private Node head;
+
+        public List() { head = null; }
+        public List(int Data) { head = new Node(Data); }
+
+        public void Append(int data)
         {
-            if (Head == null)
+            var newNode = new Node(data);
+
+            if (head == null)
             {
-                return;
-            }
-            else if (Head.Next == null)
-            {
-                Head = null;
+                head = newNode;
                 return;
             }
 
-            Node currentNode = Head;
-
-            while (currentNode.Next.Next != null)
+            var currentNode = head;
+            while (currentNode.next != null)
             {
-                currentNode = currentNode.Next;
+                currentNode = currentNode.next;
             }
-            currentNode.Next = null;
+            currentNode.next = newNode;
         }
 
-        public void insert(int data, int index)
+        public void Insert(int data, int index)
         {
             if (index < 0)
             {
+                throw new Exception("index < 0");
+            }
+            else if (head == null && index != 0)
+            {
+                throw new Exception("head == null && index != 0");
+            }
+            else if (head == null && index == 0)
+            {
+                head = new Node(data);
                 return;
             }
-            else if (Head == null && index != 0)
+            else if (head != null && index == 0)
             {
-                return;
-            }
-            else if (Head == null && index == 0)
-            {
-                Head = new Node(data);
-                return;
-            }
-            else if (Head != null && index == 0)
-            {
-                Node oldHead = Head;
-                Head = new Node(data);
-                Head.Next = oldHead;
+                head = new Node(data, head);
                 return;
             }
 
-            Node currentNode = Head;
+            var currentNode = head;
             for (int i = 0; i < index - 1; i++)
             {
-                if (currentNode.Next == null)
+                if (currentNode.next == null)
                 {
-                    return;
+                    throw new Exception("index more then size of current list");
                 }
-                currentNode = currentNode.Next;
+                currentNode = currentNode.next;
             }
-            Node nextNode = currentNode.Next;
-            currentNode.Next = new Node(data);
-            currentNode.Next.Next = nextNode;
+            currentNode.next = new Node(data, currentNode.next);
         }
 
-        public void removeNodeByIndex(int index)
+        public void RemoveNodeByIndex(int index)
         {
-            if (Head == null && index < 0)
+            if (index < 0)
             {
-                return;
+                throw new Exception("index < 0");
             }
-            else if (Head != null && index == 0)
+            else if (head == null && index < 0)
             {
-                Head = Head.Next;
+                throw new Exception("head == null && index < 0");
+            }
+            else if (head != null && index == 0)
+            {
+                head = head.next;
             }
 
-            Node currentNode = Head;
+            Node currentNode = head;
             for (int i = 0; i < index - 1; i++)
             {
-                if (currentNode.Next == null)
+                if (currentNode.next == null)
                 {
-                    return;
+                    throw new Exception("index more then size of current list");
                 }
-                currentNode = currentNode.Next;
+                currentNode = currentNode.next;
             }
 
-            if (currentNode.Next == null)
+            if (currentNode.next == null)
             {
                 return;
             }
-            currentNode.Next = currentNode.Next.Next;
+            currentNode.next = currentNode.next.next;
         }
 
-        public bool isEmpty() => (Head == null);
+        public bool IsEmpty() => (head == null);
 
-        public int getSize()
+        public int GetSize()
         {
-            if (isEmpty())
+            if (IsEmpty())
             {
                 return 0;
             }
 
             int size = 1;
-            Node currentNode = Head;
-            while (currentNode.Next != null)
+            var currentNode = head;
+            while (currentNode.next != null)
             {
-                currentNode = currentNode.Next;
+                currentNode = currentNode.next;
                 size++;
             }
             return size;
         }
 
-        public int? getDataOfNodeByIndex(int index)
-        {
-            if (index < 0 || Head == null)
-            {
-                return null;
-            }
-            if (index == 0)
-            {
-                return Head.Data;
-            }
-
-            Node currentNode = Head;
-            for (int i = 0; i < index; i++)
-            {
-                if (currentNode.Next == null)
-                {
-                    return null;
-                }
-                currentNode = currentNode.Next;
-            }
-            return currentNode.Data;
-        }
-
-        public void setDataOfNodeByIndex(int data, int index)
+        public int GetDataOfNodeByIndex(int index)
         {
             if (index < 0)
             {
-                return;
+                throw new Exception("index < 0");
             }
-            else if (Head == null && index == 0)
+            else if (head == null)
             {
-                Head = new Node(data);
+                throw new Exception("head == null");
             }
-            else if (Head == null && index != 0)
+            else if (index == 0)
             {
-                return;
+                return head.data;
             }
 
-            Node currentNode = Head;
+            Node currentNode = head;
             for (int i = 0; i < index; i++)
             {
-                if (currentNode.Next == null)
+                if (currentNode.next == null)
                 {
-                    return;
+                    throw new Exception("index more then size of current list");
                 }
-                currentNode = currentNode.Next;
+                currentNode = currentNode.next;
             }
-            currentNode.Data = data;
+            return currentNode.data;
         }
 
-        public void printList()
+        public void SetDataOfNodeByIndex(int data, int index)
         {
-            Node currentNode = Head;
+            if (index < 0)
+            {
+                throw new Exception("index < 0");
+            }
+            else if (head == null && index == 0)
+            {
+                head = new Node(data);
+            }
+            else if (head == null && index != 0)
+            {
+                throw new Exception("head == null && index != 0");
+            }
+
+            Node currentNode = head;
+            for (int i = 0; i < index; i++)
+            {
+                if (currentNode.next == null)
+                {
+                    throw new Exception("index more then size of current list");
+                }
+                currentNode = currentNode.next;
+            }
+            currentNode.data = data;
+        }
+
+        public void PrintList()
+        {
+            var currentNode = head;
 
             if (currentNode == null)
             {
-                Console.WriteLine("null");
-                return;
+                throw new Exception("list does not exist now");
             }
 
-            while (currentNode.Next != null)
+            while (currentNode.next != null)
             {
-                Console.Write($"{currentNode.Data} ");
-                currentNode = currentNode.Next;
+                Console.Write($"{currentNode.data} ");
+                currentNode = currentNode.next;
             }
-            Console.WriteLine($"{currentNode.Data} ");
+            Console.WriteLine($"{currentNode.data} ");
         }
     }
 }
