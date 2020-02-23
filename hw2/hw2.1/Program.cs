@@ -193,6 +193,7 @@ namespace hw2._1
             }
             currentNode.Data = data;
         }
+
         public void printList()
         {
             Node currentNode = Head;
@@ -210,8 +211,6 @@ namespace hw2._1
             }
             Console.WriteLine($"{currentNode.Data} ");
         }
-
-
     }
 
     class Program
