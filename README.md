@@ -2,7 +2,7 @@
   <img width="300" height="332" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
 </p>
 
-<p style="text-align: center;"># SPBU Homework</p>
+<p align="center"># SPBU Homework</p>
 
 ## Homework №1
 
