@@ -2,11 +2,11 @@
   <img width="300" height="332" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
 </p>
 
-<p align="center">
+<p align="center" markdown="1">
 <h1>SPBU Homework</h1>
 </p>
 
-<div style="text-align: center;" markdown="1">This line is centered.  This second line too.  (for a line-break, end the prior line with two spaces)</div>This following text will be left justified by default.
+<div style="text-align: center;" markdown="1">This line is centered.  This second line too.  (for a line-break, end the prior line with two spaces)</div>
 
 ## Homework №1
 
