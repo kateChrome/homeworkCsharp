@@ -5,6 +5,7 @@
 <p align="center">
 <h1>SPBU Homework</h1>
 </p>
+<center> <h1>heading 1</h1> </center>
 
 ## Homework №1
 
