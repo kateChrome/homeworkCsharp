@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-<h>SPBU Homework</h>
+<strong>SPBU Homework</strong>
 </p>
 
 ## Homework №1
