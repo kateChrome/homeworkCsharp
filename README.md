@@ -1,4 +1,4 @@
-![logo](https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png)
+![logo](https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png?style=centerme)
 
 # SPBU Homework
 
