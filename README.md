@@ -5,8 +5,7 @@
 <p align="center">
 <h1>SPBU Homework</h1>
 </p>
-<center> <h1>heading 1</h1> </center>
-
+<div style="text-align: center;" markdown="1">This line is centered.  This second line too.  (for a line-break, end the prior line with two spaces)</div>This following text will be left justified by default.
 ## Homework №1
 
 1. Посчитать факториал. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.1)
