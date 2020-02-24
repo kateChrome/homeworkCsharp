@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="600" height="200" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
+  <img width="600" height="664" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
 </p>
 
 # SPBU Homework
