@@ -2,7 +2,7 @@
   <img width="300" height="332" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
 </p>
 
-<p align="center" markdown="1">
+<p align="center"; markdown="1">
 <h1>SPBU Homework</h1>
 </p>
 
