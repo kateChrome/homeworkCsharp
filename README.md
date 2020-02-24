@@ -1,4 +1,6 @@
-![logo](https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png?style=centerme)
+<p align="center">
+  <img width="600" height="200" src="https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png">
+</p>
 
 # SPBU Homework
 
