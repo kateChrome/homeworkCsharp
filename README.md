@@ -1,4 +1,6 @@
-# Homework №1
+# SPBU Homework
+
+## Homework №1
 
 1. Посчитать факториал
 
