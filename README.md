@@ -1,4 +1,4 @@
-# SPBU Homework
+# SPBU Homework ![logo](https://github.com/kateChrome/homeworkCsharp/blob/master/img/logoSpbu.png)
 
 ## Homework №1
 
