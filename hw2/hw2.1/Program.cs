@@ -6,7 +6,7 @@ namespace HwTwoDotOne
     {
         static void Main(string[] args)
         {
-            List list = new List();
+            var list = new List();
             list.Insert(10, 0);
             list.Insert(11, 1);
             list.Insert(13, 2);
