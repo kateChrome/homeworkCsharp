@@ -13,6 +13,8 @@ Here's homework on programming and materials from programming lessons.
 [Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 
+___
+
 ### Homework №1 
 
 >[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
