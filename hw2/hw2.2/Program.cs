@@ -30,7 +30,10 @@ namespace hwTwoDotTwo
             hashTable.RemoveValue("test6");
             hashTable.RemoveValue("test1");
             hashTable.RemoveValue("test4");
-            hashTable.RemoveValue("asdasdasd");
+            hashTable.RemoveValue("test1337");
+            hashTable.RemoveValue("test11");
+            hashTable.RemoveValue("test17");
+            hashTable.RemoveValue("test18");
             Console.WriteLine($"\nis \"test2\" in hashTable? {hashTable.IsInTheHashTable("test2")}");
             Console.WriteLine($"is \"test20\" in hashTable? {hashTable.IsInTheHashTable("test20")}\n");
             hashTable.PrintHashTable();
