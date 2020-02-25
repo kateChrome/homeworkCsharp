@@ -13,9 +13,7 @@ Here's homework on programming and materials from programming lessons.
 [Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 
-___
-
-### Homework №1 
+## Homework №1 
 
 >[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
 
@@ -29,7 +27,7 @@ ___
 
 5. Отсортировать столбцы матрицы по первым элементам. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.5)
 
-### Homework №2 
+## Homework №2 
 
 >[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson2)
 
