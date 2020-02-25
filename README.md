@@ -4,7 +4,7 @@
 
 # SPBU homework
 
-Here's homework on programming and materials from programming lessons
+Here's homework on programming and materials from programming lessons.
 
 ## Navigation menu
 
