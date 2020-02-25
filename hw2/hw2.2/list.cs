@@ -13,24 +13,13 @@ namespace hwTwoDotTwo
             public Node(string data, Node next) { this.data = data; this.next = next; }
         }
 
-        private string hash;
-
-        public string Hash
-        {
-            get 
-            {
-                return hash;
-            }
-            set
-            {
-                hash = value;
-            }
-        }
         private Node head;
         private Node tail;
 
-        public List() { hash = ""; head = null; tail = null; }
-        public List(string Data) { hash = ""; head = new Node(Data); tail = head; }
+        private int size;
+
+        public List() { head = null; tail = null; size = 0; }
+        public List(string Data) { head = new Node(Data); tail = head; size = 1; }
 
         public bool IsOnTheList(string data)
         {
@@ -55,11 +44,13 @@ namespace hwTwoDotTwo
             {
                 head = newNode;
                 tail = head;
+                size++;
                 return;
             }
 
             tail.next = newNode;
             tail = newNode;
+            size++;
         }
 
         public bool DeleteData(string data)
@@ -71,6 +62,7 @@ namespace hwTwoDotTwo
             else if (head.data == data)
             {
                 head = head.next;
+                size--;
                 return true;
             }
 
@@ -84,6 +76,7 @@ namespace hwTwoDotTwo
                         tail = currentNode;
                     }
                     currentNode.next = currentNode.next.next;
+                    size--;
                     return true;
                 }
                 currentNode = currentNode.next;
@@ -109,5 +102,41 @@ namespace hwTwoDotTwo
             }
             Console.WriteLine($"{currentNode.data} ");
         }
+
+        public string[] returnAllNodes()
+        {
+            var currentNode = head;
+
+            if (currentNode == null)
+            {
+                throw new Exception("list does not exist now");
+            }
+
+            var allNodes = new string[size];
+            for (int i = 0; i < size; i++)
+            {
+                allNodes[i] = currentNode.data;
+                currentNode = currentNode.next;
+            }
+
+            return allNodes;
+        }
+        public string ReturnHeadValue()
+        {
+            return head.data;
+        }
+
+        public int getSize
+        {
+            set
+            {
+            }
+            get
+            {
+                return size;
+            }
+
+        }
+
     }
 }

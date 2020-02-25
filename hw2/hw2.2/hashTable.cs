@@ -8,9 +8,12 @@ namespace hwTwoDotTwo
     {
         private List[] table;
 
-        public hashTable() { table = null; }
+        private const double maximumFillFactor = 0.5;
+        private const int size = 5;
+        private int numberOfItems;
+        public hashTable() { table = null; numberOfItems = 0; }
 
-        public string hash(string data)
+        private int hash(string data)
         {
             StringBuilder hash = new StringBuilder();
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
@@ -20,65 +23,65 @@ namespace hwTwoDotTwo
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return hash.ToString().Substring(0,1);
+            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16) % table.Length;
         }
-        
+
+        private void FillFactorChecking()
+        {
+            if (numberOfItems / table.Length <= maximumFillFactor)
+            {
+                return;
+            }
+
+            var newTable = new List[table.Length * 2];
+            for (int i = 0; i < newTable.Length; i++)
+            {
+                newTable[i] = new List();
+            }
+
+            for (int i = 0; i < table.Length / 2; i++)
+            {
+                if (table[i].IsEmpty())
+                {
+                    continue;
+                }
+                var temporaryNodes = table[i].returnAllNodes();
+                foreach (var item in temporaryNodes)
+                {
+                    newTable[hash(item)].Append(item);
+                }
+            }
+            table = newTable;
+        }
         public void AddValue(string data)
         {
             if (table == null)
             {
-                table = new List[1];
-                table[0] = new List();
-                table[0].Hash = hash(data);
-                table[0].Append(data);
+                table = new List[size];
+                for (int i = 0; i < table.Length; i++)
+                {
+                    table[i] = new List();
+                }
+                table[hash(data)].Append(data);
+                numberOfItems++;
                 return;
             }
-            string currentHash = hash(data);
-            for (int i = 0; i < table.Length; i++)
-            {
-                if (table[i].Hash == currentHash)
-                {
-                    if (table[i].IsOnTheList(data))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        table[i].Append(data);
-                        return;
-                    }
-                }
-            }
-            Array.Resize(ref table, table.Length + 1);
-            table[table.Length - 1] = new List();
-            table[table.Length - 1].Hash = currentHash;
-            table[table.Length - 1].Append(data);
-
+            table[hash(data)].Append(data);
+            numberOfItems++;
+            FillFactorChecking();
         }
 
         public bool RemoveValue(string data)
         {
             if (table == null)
             {
-                throw new Exception("table == null");
+                throw new Exception("table does not exist now");
             }
-
-            string currentHash = hash(data);
-            for (int i = 0; i < table.Length; i++)
+            else if (table[hash(data)].IsOnTheList(data))
             {
-                if (table[i].Hash == currentHash)
-                {
-                    table[i].DeleteData(data);
-                    if (table[i].IsEmpty())
-                    {
-                        for (int j = i; j < table.Length - 1; j++)
-                        {
-                            table[j] = table[j + 1];
-                        }
-                        Array.Resize(ref table, table.Length - 1);
-                    }
-                    return true;
-                }
+                table[hash(data)].DeleteData(data);
+                numberOfItems--;
+                return true;
             }
 
             return false;
@@ -88,29 +91,21 @@ namespace hwTwoDotTwo
         {
             if (table == null)
             {
-                throw new Exception("table == null");
+                throw new Exception("table does not exist now");
             }
 
-            string currentHash = hash(data);
-            for (int i = 0; i < table.Length; i++)
-            {
-                if (table[i].Hash == currentHash)
-                {
-                    if (table[i].IsOnTheList(data))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            return table[hash(data)].IsOnTheList(data);
         }
 
         public void PrintHashTable()
         {
             for (int i = 0; i < table.Length; i++)
             {
-                Console.Write($"{table[i].Hash}: ");
+                if (table[i].IsEmpty())
+                {
+                    continue;
+                }
+                Console.Write($"{hash(table[i].ReturnHeadValue())}: ");
                 table[i].PrintList();
             }
         }
