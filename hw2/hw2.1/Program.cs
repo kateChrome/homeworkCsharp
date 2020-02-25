@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace hwTwoDotOne
+namespace HwTwoDotOne
 {
     class Program
     {
         static void Main(string[] args)
         {
             List list = new List();
-            list.Append(10);
-            list.Append(11);
-            list.Append(13);
-            list.Append(100);
+            list.Insert(10, 0);
+            list.Insert(11, 1);
+            list.Insert(13, 2);
+            list.Insert(100, 3);
             list.Insert(1000, 0);
             list.PrintList();
             list.Insert(12000, 0);

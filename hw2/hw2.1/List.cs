@@ -1,6 +1,6 @@
 using System;
 
-namespace hwTwoDotOne
+namespace HwTwoDotOne
 {
     public class List
     {
@@ -18,22 +18,18 @@ namespace hwTwoDotOne
         public List() { head = null; }
         public List(int Data) { head = new Node(Data); }
 
-        public void Append(int data)
+        private Node FindNeededNode(int index)
         {
-            var newNode = new Node(data);
-
-            if (head == null)
-            {
-                head = newNode;
-                return;
-            }
-
             var currentNode = head;
-            while (currentNode.next != null)
+            for (int i = 0; i < index - 1; i++)
             {
+                if (currentNode.next == null)
+                {
+                    throw new Exception("index more than size of current list");
+                }
                 currentNode = currentNode.next;
             }
-            currentNode.next = newNode;
+            return currentNode;
         }
 
         public void Insert(int data, int index)
@@ -44,7 +40,7 @@ namespace hwTwoDotOne
             }
             else if (head == null && index != 0)
             {
-                throw new Exception("head == null && index != 0");
+                throw new Exception("list does not exist now");
             }
             else if (head == null && index == 0)
             {
@@ -57,15 +53,7 @@ namespace hwTwoDotOne
                 return;
             }
 
-            var currentNode = head;
-            for (int i = 0; i < index - 1; i++)
-            {
-                if (currentNode.next == null)
-                {
-                    throw new Exception("index more then size of current list");
-                }
-                currentNode = currentNode.next;
-            }
+            var currentNode = FindNeededNode(index);
             currentNode.next = new Node(data, currentNode.next);
         }
 
@@ -75,24 +63,20 @@ namespace hwTwoDotOne
             {
                 throw new Exception("index < 0");
             }
-            else if (head == null && index < 0)
+            else if (head == null)
             {
-                throw new Exception("head == null && index < 0");
+                throw new Exception("list does not exist now");
+            }
+            else if (index < 0)
+            {
+                throw new Exception("index < 0");
             }
             else if (head != null && index == 0)
             {
                 head = head.next;
             }
 
-            Node currentNode = head;
-            for (int i = 0; i < index - 1; i++)
-            {
-                if (currentNode.next == null)
-                {
-                    throw new Exception("index more then size of current list");
-                }
-                currentNode = currentNode.next;
-            }
+            var currentNode = FindNeededNode(index);
 
             if (currentNode.next == null)
             {
@@ -128,22 +112,14 @@ namespace hwTwoDotOne
             }
             else if (head == null)
             {
-                throw new Exception("head == null");
+                throw new Exception("list does not exist now");
             }
             else if (index == 0)
             {
                 return head.data;
             }
 
-            Node currentNode = head;
-            for (int i = 0; i < index; i++)
-            {
-                if (currentNode.next == null)
-                {
-                    throw new Exception("index more then size of current list");
-                }
-                currentNode = currentNode.next;
-            }
+            var currentNode = FindNeededNode(index);
             return currentNode.data;
         }
 
@@ -159,18 +135,10 @@ namespace hwTwoDotOne
             }
             else if (head == null && index != 0)
             {
-                throw new Exception("head == null && index != 0");
+                throw new Exception("list does not exist now & index != 0");
             }
 
-            Node currentNode = head;
-            for (int i = 0; i < index; i++)
-            {
-                if (currentNode.next == null)
-                {
-                    throw new Exception("index more then size of current list");
-                }
-                currentNode = currentNode.next;
-            }
+            var currentNode = FindNeededNode(index);
             currentNode.data = data;
         }
 
