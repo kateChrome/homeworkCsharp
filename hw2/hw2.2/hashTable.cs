@@ -8,12 +8,12 @@ namespace hwTwoDotTwo
     {
         private List[] table;
 
-        private const double maximumFillFactor = 0.5;
+        private const double maximumFillFactor = 1.2;
         private const int size = 5;
         private int numberOfItems;
         public hashTable() { table = null; numberOfItems = 0; }
 
-        private int hash(string data)
+        private int hash(string data, int size)
         {
             StringBuilder hash = new StringBuilder();
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
@@ -23,7 +23,7 @@ namespace hwTwoDotTwo
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16) % table.Length;
+            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16) % size;
         }
 
         private void FillFactorChecking()
@@ -39,7 +39,7 @@ namespace hwTwoDotTwo
                 newTable[i] = new List();
             }
 
-            for (int i = 0; i < table.Length / 2; i++)
+            for (int i = 0; i < table.Length; i++)
             {
                 if (table[i].IsEmpty())
                 {
@@ -48,7 +48,7 @@ namespace hwTwoDotTwo
                 var temporaryNodes = table[i].returnAllNodes();
                 foreach (var item in temporaryNodes)
                 {
-                    newTable[hash(item)].Append(item);
+                    newTable[hash(item, newTable.Length)].Append(item);
                 }
             }
             table = newTable;
@@ -62,11 +62,11 @@ namespace hwTwoDotTwo
                 {
                     table[i] = new List();
                 }
-                table[hash(data)].Append(data);
+                table[hash(data, table.Length)].Append(data);
                 numberOfItems++;
                 return;
             }
-            table[hash(data)].Append(data);
+            table[hash(data, table.Length)].Append(data);
             numberOfItems++;
             FillFactorChecking();
         }
@@ -77,9 +77,9 @@ namespace hwTwoDotTwo
             {
                 throw new Exception("table does not exist now");
             }
-            else if (table[hash(data)].IsOnTheList(data))
+            else if (table[hash(data, table.Length)].IsOnTheList(data))
             {
-                table[hash(data)].DeleteData(data);
+                table[hash(data, table.Length)].DeleteData(data);
                 numberOfItems--;
                 return true;
             }
@@ -94,7 +94,7 @@ namespace hwTwoDotTwo
                 throw new Exception("table does not exist now");
             }
 
-            return table[hash(data)].IsOnTheList(data);
+            return table[hash(data, table.Length)].IsOnTheList(data);
         }
 
         public void PrintHashTable()
@@ -105,7 +105,7 @@ namespace hwTwoDotTwo
                 {
                     continue;
                 }
-                Console.Write($"{hash(table[i].ReturnHeadValue())}: ");
+                Console.Write($"{hash(table[i].ReturnHeadValue(), table.Length)}: ");
                 table[i].PrintList();
             }
         }
