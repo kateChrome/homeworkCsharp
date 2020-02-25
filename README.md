@@ -4,7 +4,7 @@
 
 # SPBU homework
 
-## Homework №1
+## Homework №1 [material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
 
 1. Посчитать факториал. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.1)
 
