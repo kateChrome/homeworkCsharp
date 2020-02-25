@@ -4,7 +4,9 @@
 
 # SPBU homework
 
-## Homework №1 [material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
+## Homework №1 
+
+>[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
 
 1. Посчитать факториал. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.1)
 
@@ -16,7 +18,9 @@
 
 5. Отсортировать столбцы матрицы по первым элементам. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.5)
 
-## Homework №2
+## Homework №2 
+
+>[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson2)
 
 1. Написать связный список в виде класса. От списка хочется:
     - Добавлять/удалять элемент по произвольной позиции, задаваемой целым числом.
