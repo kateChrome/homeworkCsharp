@@ -4,7 +4,13 @@
 
 # SPBU homework
 
-## Homework №1 
+## Navigation menu
+[SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) |
+----------- |
+[Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
+[Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
+
+### Homework №1 
 
 >[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson1)
 
@@ -18,7 +24,7 @@
 
 5. Отсортировать столбцы матрицы по первым элементам. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw1/hw1.5)
 
-## Homework №2 
+### Homework №2 
 
 >[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson2)
 
