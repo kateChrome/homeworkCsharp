@@ -15,6 +15,17 @@ namespace hwTwoDotTwo
             hashTable.AddValue("test6");
             hashTable.AddValue("test7");
             hashTable.AddValue("test8");
+            hashTable.AddValue("test9");
+            hashTable.AddValue("test10");
+            hashTable.AddValue("test11");
+            hashTable.AddValue("test12");
+            hashTable.AddValue("test13");
+            hashTable.AddValue("test14");
+            hashTable.AddValue("test15");
+            hashTable.AddValue("test16");
+            hashTable.AddValue("test17");
+            hashTable.AddValue("test18");
+            hashTable.AddValue("test19");
             hashTable.PrintHashTable();
             hashTable.RemoveValue("test6");
             hashTable.RemoveValue("test1");
