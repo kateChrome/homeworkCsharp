@@ -92,6 +92,7 @@ namespace hwTwoDotTwo
         }
 
         public bool isEmpty() => head == null;
+
         public void PrintList()
         {
             var currentNode = head;

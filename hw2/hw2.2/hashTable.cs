@@ -22,6 +22,7 @@ namespace hwTwoDotTwo
             }
             return hash.ToString().Substring(0,1);
         }
+        
         public void AddValue(string data)
         {
             if (table == null)
