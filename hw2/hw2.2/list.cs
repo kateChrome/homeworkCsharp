@@ -91,7 +91,7 @@ namespace hwTwoDotTwo
             return false;
         }
 
-        public bool isEmpty() => head == null;
+        public bool IsEmpty() => head == null;
 
         public void PrintList()
         {

@@ -69,7 +69,7 @@ namespace hwTwoDotTwo
                 if (table[i].Hash == currentHash)
                 {
                     table[i].DeleteData(data);
-                    if (table[i].isEmpty())
+                    if (table[i].IsEmpty())
                     {
                         for (int j = i; j < table.Length - 1; j++)
                         {
