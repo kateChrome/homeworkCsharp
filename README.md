@@ -8,7 +8,8 @@ Here's homework on programming and materials from programming lessons
 
 ## Navigation menu
 
-[SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) |----------- |
+[SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) |
+----------- |
 [Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 
