@@ -106,7 +106,7 @@ namespace hwTwoDotThree
                         }
                     default:
                         {
-                            throw new Exception("Unknown character");
+                            throw new Exception("unknown character");
                         }
                 }
             }
