@@ -4,8 +4,8 @@ namespace hwTwoDotThree
     {
         bool IsEmpty();
 
-        void Push(int value);
+        void Push(double value);
 
-        int Pop();
+        double Pop();
     }
 }

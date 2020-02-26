@@ -6,28 +6,28 @@ namespace hwTwoDotThree
     {
         private class Node
         {
-            public int data;
+            public double data;
             public Node previousNode;
 
-            public Node(int data, Node previousNode) { this.data = data; this.previousNode = previousNode; }
+            public Node(double data, Node previousNode) { this.data = data; this.previousNode = previousNode; }
         }
 
         private Node top;
 
         public bool IsEmpty() => top == null;
-        public void Push(int data)
+        public void Push(double data)
         {
             top = new Node(data, top);
         }
 
-        public int Pop()
+        public double Pop()
         {
             if (IsEmpty())
             {
                 throw new Exception("stack does not exist now");
             }
 
-            int data = top.data;
+            var data = top.data;
             top = top.previousNode;
             return data;
         }

@@ -4,26 +4,26 @@ namespace hwTwoDotThree
 {
     public class ArrayStack : IStack
     {
-        private int[] stack;
+        private double[] stack;
 
-        public ArrayStack() { stack = new int[0]; }
+        public ArrayStack() { stack = new double[0]; }
 
         public bool IsEmpty() => stack.Length == 0;
 
-        public void Push(int data)
+        public void Push(double data)
         {
             Array.Resize(ref stack, stack.Length + 1);
             stack[stack.Length - 1] = data;
         }
 
-        public int Pop()
+        public double Pop()
         {
             if (IsEmpty())
             {
                 throw new Exception("stack does not exist now");
             }
 
-            int data = stack[stack.Length - 1];
+            var data = stack[stack.Length - 1];
             Array.Resize(ref stack, stack.Length - 1);
             return data;
         }
