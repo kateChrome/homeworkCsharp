@@ -7,17 +7,26 @@ namespace hwTwoDotThree
         private static IStack stack;
         private int systemBase = 10;
 
-        private (double, double) getTwoValuesFromStack()
+        private void CheckStackForUnemptiness()
+        {
+            if (!stack.IsEmpty())
+            {
+                throw new Exception("incorrect expression");
+            }
+        }
+        private void CheckStackForEmptiness()
         {
             if (stack.IsEmpty())
             {
                 throw new Exception("incorrect expression");
             }
+        }
+
+        private (double, double) getTwoValuesFromStack()
+        {
+            CheckStackForEmptiness();
             var value1 = stack.Pop();
-            if (stack.IsEmpty())
-            {
-                throw new Exception("incorrect expression");
-            }
+            CheckStackForEmptiness();
             var value2 = stack.Pop();
 
             return (value1, value2);
@@ -101,11 +110,9 @@ namespace hwTwoDotThree
                         }
                 }
             }
+            CheckStackForEmptiness();
             var result = stack.Pop();
-            if (!stack.IsEmpty())
-            {
-                throw new Exception("incorrect expression");
-            }
+            CheckStackForUnemptiness();
             return result;
         }
     }
