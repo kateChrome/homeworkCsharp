@@ -1,6 +1,6 @@
 using System;
 
-namespace hwTwoDotThree
+namespace HwTwoDotThree
 {
     public class ListStack : IStack
     {

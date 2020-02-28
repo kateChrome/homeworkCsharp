@@ -1,12 +1,13 @@
 using System;
 
-namespace hwTwoDotThree
+namespace HwTwoDotThree
 {
     public class Calculator
     {
-        private static IStack stack;
+        private IStack stack;
         private int systemBase = 10;
 
+        public Calculator(IStack stack) { this.stack = stack; }
         private void CheckStackForUnemptiness()
         {
             if (!stack.IsEmpty())
@@ -31,23 +32,8 @@ namespace hwTwoDotThree
 
             return (value1, value2);
         }
-        public double Calculate(string expression, int mode)
+        public double Calculate(string expression)
         {
-            switch (mode)
-            {
-                case 0:
-                    {
-                        stack = new ListStack();
-                        break;
-                    }
-                case 1:
-                    {
-                        stack = new ArrayStack();
-                        break;
-                    }
-                default:
-                    throw new Exception("mode does not exist");
-            }
 
             var number = 0;
             bool isNumber = true;

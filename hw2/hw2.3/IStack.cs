@@ -1,6 +1,6 @@
-namespace hwTwoDotThree
+namespace HwTwoDotThree
 {
-    interface IStack
+    public interface IStack
     {
         bool IsEmpty();
 
