@@ -45,7 +45,7 @@ namespace HwTwoDotThree
                     number = number * systemBase + int.Parse(item.ToString());
                     continue;
                 }
-                else if (!char.IsDigit(item) && isNumber == true)
+                else if (isNumber)
                 {
                     stack.Push(number);
                     number = 0;
@@ -56,33 +56,25 @@ namespace HwTwoDotThree
                 {
                     case '+':
                         {
-                            var twoValues = getTwoValuesFromStack();
-                            var value1 = twoValues.Item1;
-                            var value2 = twoValues.Item2;
+                            var (value1, value2) = getTwoValuesFromStack();
                             stack.Push(value2 + value1);
                             break;
                         }
                     case '-':
                         {
-                            var twoValues = getTwoValuesFromStack();
-                            var value1 = twoValues.Item1;
-                            var value2 = twoValues.Item2;
+                            var (value1, value2) = getTwoValuesFromStack();
                             stack.Push(value2 - value1);
                             break;
                         }
                     case '*':
                         {
-                            var twoValues = getTwoValuesFromStack();
-                            var value1 = twoValues.Item1;
-                            var value2 = twoValues.Item2;
+                            var (value1, value2) = getTwoValuesFromStack();
                             stack.Push(value2 * value1);
                             break;
                         }
                     case '/':
                         {
-                            var twoValues = getTwoValuesFromStack();
-                            var value1 = twoValues.Item1;
-                            var value2 = twoValues.Item2;
+                            var (value1, value2) = getTwoValuesFromStack();
                             stack.Push(value2 / value1);
                             break;
                         }

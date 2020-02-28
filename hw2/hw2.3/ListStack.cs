@@ -9,7 +9,11 @@ namespace HwTwoDotThree
             public double data;
             public Node previousNode;
 
-            public Node(double data, Node previousNode) { this.data = data; this.previousNode = previousNode; }
+            public Node(double data, Node previousNode) 
+            { 
+                this.data = data; 
+                this.previousNode = previousNode; 
+            }
         }
 
         private Node top;
