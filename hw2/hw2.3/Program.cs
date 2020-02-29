@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HwTwoDotThree
+namespace HwTreeDotOne
 {
     class Program
     {

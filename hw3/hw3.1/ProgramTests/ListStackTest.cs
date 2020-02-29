@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace HwTwoDotThree.Tests
+namespace HwTreeDotOne.Tests
 {
     public class ListStackTest
     {
