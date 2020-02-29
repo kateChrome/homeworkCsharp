@@ -1,26 +1,19 @@
 ﻿using System;
 
-namespace HwTreeDotOne
+namespace HwThreeDotOne
 {
-    class StartCalculate
+    class Program
     {
-        public int GetMode() => Convert.ToInt32(Console.ReadLine());
-
-        public string GetExpression() => Console.ReadLine();
-
-        public StartCalculate(Calculator calculator, string expression) 
-        => calculator(expression);
-
         static void Main(string[] args)
         {
             Console.Write("Enter stack mode (list = 0, array = 1): ");
-            int mode = getMode();
+            int mode = Convert.ToInt32(Console.ReadLine());
 
             IStack stack;
             switch (mode)
             {
                 case 0:
-                    {   
+                    {
                         stack = new ListStack();
                         break;
                     }
@@ -35,9 +28,8 @@ namespace HwTreeDotOne
 
             Calculator calculator = new Calculator(stack);
             Console.Write("Enter expression: ");
-            string expression = getExpression();
-            double result = startCalculate(calculator, expression);
-            Console.WriteLine($"Expression is equal {result}");
+            string expression = Console.ReadLine();
+            Console.WriteLine($"Expression is equal {calculator.Calculate(expression)}");
         }
     }
 }

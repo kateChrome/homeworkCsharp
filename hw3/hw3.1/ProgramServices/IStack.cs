@@ -1,4 +1,4 @@
-namespace HwTreeDotOne
+namespace HwThreeDotOne
 {
     public interface IStack
     {

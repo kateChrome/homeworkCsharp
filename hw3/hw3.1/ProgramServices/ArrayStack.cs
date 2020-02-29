@@ -1,6 +1,6 @@
 using System;
 
-namespace HwTreeDotOne
+namespace HwThreeDotOne
 {
     public class ArrayStack : IStack
     {

@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace HwTreeDotOne.Tests
+namespace HwThreeDotOne.Tests
 {
     public class CalculatorTestWithArrayStack
     {
