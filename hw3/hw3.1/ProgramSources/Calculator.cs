@@ -1,6 +1,6 @@
 using System;
 
-namespace HwThreeDotOne
+namespace HwTwoDotThree
 {
     public class Calculator
     {
@@ -8,7 +8,6 @@ namespace HwThreeDotOne
         private int systemBase = 10;
 
         public Calculator(IStack stack) { this.stack = stack; }
-        
         private void CheckStackForUnemptiness()
         {
             if (!stack.IsEmpty())
@@ -16,7 +15,6 @@ namespace HwThreeDotOne
                 throw new Exception("incorrect expression");
             }
         }
-
         private void CheckStackForEmptiness()
         {
             if (stack.IsEmpty())
@@ -34,7 +32,6 @@ namespace HwThreeDotOne
 
             return (value1, value2);
         }
-
         public double Calculate(string expression)
         {
 
