@@ -1,6 +1,6 @@
 using System;
 
-namespace HwTwoDotThree
+namespace Program.Services
 {
     public class Calculator
     {

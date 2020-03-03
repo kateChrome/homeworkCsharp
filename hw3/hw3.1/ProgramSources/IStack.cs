@@ -1,4 +1,4 @@
-namespace HwTwoDotThree
+namespace Program.Services
 {
     public interface IStack
     {

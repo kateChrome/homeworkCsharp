@@ -1,6 +1,6 @@
 using System;
 
-namespace HwTwoDotThree
+namespace Program.Services
 {
     public class ListStack : IStack
     {
@@ -28,7 +28,7 @@ namespace HwTwoDotThree
         {
             if (IsEmpty())
             {
-                throw new Exception("stack does not exist now");
+                throw new Exception("stack is empty now");
             }
 
             var data = top.data;

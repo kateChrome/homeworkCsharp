@@ -1,6 +1,6 @@
 using System;
 
-namespace HwTwoDotThree
+namespace Program.Services
 {
     public class ArrayStack : IStack
     {
@@ -20,7 +20,7 @@ namespace HwTwoDotThree
         {
             if (IsEmpty())
             {
-                throw new Exception("stack does not exist now");
+                throw new Exception("stack is empty now");
             }
 
             var data = stack[stack.Length - 1];
