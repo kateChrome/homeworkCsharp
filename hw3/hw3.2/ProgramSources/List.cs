@@ -2,8 +2,14 @@ using System;
 
 namespace ProgramSources
 {
+    /// <summary>
+    /// Class with implementation list structure 
+    /// </summary>
     public class List
     {
+        /// <summary>
+        /// Class with implementation node of <see cref="List" /> structure
+        /// </summary>
         private class Node
         {
             public string data;
@@ -19,10 +25,15 @@ namespace ProgramSources
 
         private int size;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="List"/> class
+        /// </summary>
         public List() { head = null; tail = null; size = 0; }
-        
-        public List(string Data) { head = new Node(Data); tail = head; size = 1; }
 
+        /// <summary>
+        /// check that the item is in the list 
+        /// </summary>
+        /// <param name="data">data of checkable item</param>
         public bool IsOnTheList(string data)
         {
             Node currentNode = head;
@@ -38,6 +49,10 @@ namespace ProgramSources
             return false;
         }
 
+        /// <summary>
+        /// append data to <see cref="List"> instance
+        /// </summary>
+        /// <param name="data"></param>
         public void Append(string data)
         {
             var newNode = new Node(data);
@@ -55,6 +70,10 @@ namespace ProgramSources
             size++;
         }
 
+        /// <summary>
+        /// delete data from <see cref="List"> instance
+        /// </summary>
+        /// <param name="data">data to be delete</param>
         public bool DeleteData(string data)
         {
             if (head == null)
@@ -86,8 +105,14 @@ namespace ProgramSources
             return false;
         }
 
+        /// <summary>
+        /// Сheck the list for emptiness 
+        /// </summary>
         public bool IsEmpty() => head == null;
 
+        /// <summary>
+        /// print <see cref="List"> <see cref="Node"> by <see cref="Node">
+        /// </summary>
         public void PrintList()
         {
             var currentNode = head;
@@ -105,6 +130,10 @@ namespace ProgramSources
             Console.WriteLine($"{currentNode.data} ");
         }
 
+        /// <summary>
+        /// return all <see cref="Node"> of <see cref="List"> instance
+        /// </summary>
+        /// <returns>string array of <see cref="Node"></returns>
         public string[] ReturnAllNodes()
         {
             var currentNode = head;
@@ -123,16 +152,20 @@ namespace ProgramSources
 
             return allNodes;
         }
+
+        /// <summary>
+        /// return value of head <see cref="Node"> of <see cref="List"> instance
+        /// </summary>
         public string ReturnHeadValue()
         {
             return head.data;
         }
 
+        /// <summary>
+        /// get size of <see cref="List"> instance
+        /// </summary>
         public int Size
         {
-            set
-            {
-            }
             get
             {
                 return size;

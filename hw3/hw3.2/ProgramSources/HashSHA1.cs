@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ProgramSources
 {
+    /// <summary>
+    /// calculate hash SHA1
+    /// </summary>
     public class HashSHA1 : IHash
     {
         /// <summary>

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ProgramSources
 {
+    /// <summary>
+    /// Class with implementation hash table structure.
+    /// </summary>
     public class HashTable
     {
         private List[] table;
@@ -11,12 +14,23 @@ namespace ProgramSources
         private const int size = 5;
         private int numberOfItems;
 
-        public int NumberOfItems { get {return numberOfItems;} }
+        /// <summary>
+        /// get number of items in hash table
+        /// </summary>
+        public int NumberOfItems { get { return numberOfItems; } }
 
         private IHash hash;
 
+        /// <summary>
+        /// set hash table and its hash function
+        /// </summary>
+        /// <param name="hash"></param>
         public HashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
 
+        /// <summary>
+        /// resize hash table
+        /// </summary>
+        /// <param name="size">new hash table size</param>
         private void ChangeHashTableSize(int size)
         {
 
@@ -39,10 +53,13 @@ namespace ProgramSources
                 }
             }
             table = newTable;
-            FillFactorChecking();
+            FillFactorCheck();
         }
 
-        private void FillFactorChecking()
+        /// <summary>
+        /// check fill factor and fix size, if current fill factore more then constant fill factor
+        /// </summary>
+        private void FillFactorCheck()
         {
             if (numberOfItems / table.Length <= maximumFillFactor)
             {
@@ -52,6 +69,10 @@ namespace ProgramSources
             ChangeHashTableSize(table.Length * 2);
         }
 
+        /// <summary>
+        /// add data to hash table
+        /// </summary>
+        /// <param name="data">data to be add</param>
         public void AddValue(string data)
         {
             if (table == null)
@@ -63,14 +84,19 @@ namespace ProgramSources
                 }
                 table[hash.Hash(data, table.Length)].Append(data);
                 numberOfItems++;
-                FillFactorChecking();
+                FillFactorCheck();
                 return;
             }
             table[hash.Hash(data, table.Length)].Append(data);
             numberOfItems++;
-            FillFactorChecking();
+            FillFactorCheck();
         }
 
+        /// <summary>
+        /// remove data from hash table
+        /// </summary>
+        /// <param name="data">data to be remove</param>
+        /// <returns></returns>
         public bool RemoveValue(string data)
         {
             if (table == null)
@@ -87,6 +113,11 @@ namespace ProgramSources
             return false;
         }
 
+        /// <summary>
+        /// check data for existence in table
+        /// </summary>
+        /// <param name="data">data to be check for existence</param>
+        /// <returns></returns>
         public bool IsInTheHashTable(string data)
         {
             if (table == null)
@@ -97,6 +128,9 @@ namespace ProgramSources
             return table[hash.Hash(data, table.Length)].IsOnTheList(data);
         }
 
+        /// <summary>
+        /// print hash table bucket by bucket
+        /// </summary>
         public void PrintHashTable()
         {
             for (int i = 0; i < table.Length; i++)
@@ -111,14 +145,22 @@ namespace ProgramSources
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// change hash function in hash table and recalculate all data places
+        /// </summary>
+        /// <param name="hash">new hash function</param>
         public void ChangeHashFunction(IHash hash)
         {
             this.hash = hash;
-            var newTable = new List[size];
 
             ChangeHashTableSize(size);
         }
 
+        /// <summary>
+        /// calculate hash of input data and return this
+        /// </summary>
+        /// <param name="data">input data</param>
+        /// <returns>hash value of input data</returns>
         public int GetHash(string data)
         {
             return hash.Hash(data, HashTable.size);

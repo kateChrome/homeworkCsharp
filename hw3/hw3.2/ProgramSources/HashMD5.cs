@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ProgramSources
 {
+    /// <summary>
+    /// calculate hash MD5
+    /// </summary>
     public class HashMD5 : IHash
     {
         /// <summary>
