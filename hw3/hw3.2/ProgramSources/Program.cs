@@ -15,7 +15,7 @@ namespace ProgramSources
             hashTable.AddValue("test6");
             hashTable.PrintHashTable();
             hashTable.AddValue("test7");
-            hashTable.changeHashFunction(new HashMD5());
+            hashTable.ChangeHashFunction(new HashMD5());
             hashTable.AddValue("test8");
             hashTable.AddValue("test9");
             hashTable.AddValue("test10");
@@ -51,11 +51,11 @@ namespace ProgramSources
             Console.WriteLine($"is \"test20\" in hashTable? {hashTable.IsInTheHashTable("test20")}\n");
             hashTable.PrintHashTable();
 
-            hashTable.changeHashFunction(new HashMD5());
+            hashTable.ChangeHashFunction(new HashMD5());
             hashTable.PrintHashTable();
-            hashTable.changeHashFunction(new HashSHA1());
+            hashTable.ChangeHashFunction(new HashSHA1());
             hashTable.PrintHashTable();
-            hashTable.changeHashFunction(new HashMD5());
+            hashTable.ChangeHashFunction(new HashMD5());
             hashTable.PrintHashTable();
         }
     }

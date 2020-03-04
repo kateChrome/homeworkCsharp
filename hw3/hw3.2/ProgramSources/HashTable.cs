@@ -4,12 +4,15 @@ using System.Text;
 
 namespace ProgramSources
 {
-    class HashTable
+    public class HashTable
     {
         private List[] table;
         private const double maximumFillFactor = 1.2;
         private const int size = 5;
         private int numberOfItems;
+
+        public int NumberOfItems { get {return numberOfItems;} }
+
         private IHash hash;
 
         public HashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
@@ -108,12 +111,17 @@ namespace ProgramSources
             Console.WriteLine();
         }
 
-        public void changeHashFunction(IHash hash)
+        public void ChangeHashFunction(IHash hash)
         {
             this.hash = hash;
             var newTable = new List[size];
-           
+
             ChangeHashTableSize(size);
+        }
+
+        public int GetHash(string data)
+        {
+            return hash.Hash(data, HashTable.size);
         }
     }
 }

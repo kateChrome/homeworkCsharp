@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace ProgramSources
+namespace ProgramSources.Tests
 {
     public class ListTests
     {
