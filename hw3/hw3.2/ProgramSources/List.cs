@@ -126,7 +126,7 @@ namespace ProgramSources
             return head.data;
         }
 
-        public int getSize
+        public int Size
         {
             set
             {
@@ -135,7 +135,6 @@ namespace ProgramSources
             {
                 return size;
             }
-
         }
 
     }

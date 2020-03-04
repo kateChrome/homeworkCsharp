@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProgramSources
 {
-    class hashTable
+    class HashTable
     {
         private List[] table;
         private const double maximumFillFactor = 1.2;
@@ -12,7 +12,7 @@ namespace ProgramSources
         private int numberOfItems;
         private IHash hash;
 
-        public hashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
+        public HashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
 
         private void changeHashTableSize(int size)
         {

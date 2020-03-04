@@ -6,7 +6,7 @@ namespace ProgramSources
     {
         static void Main(string[] args)
         {
-            var hashTable = new hashTable(new HashSHA1());
+            var hashTable = new HashTable(new HashSHA1());
             hashTable.AddValue("test1");
             hashTable.AddValue("test2");
             hashTable.AddValue("test3");
