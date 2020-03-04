@@ -6,6 +6,12 @@ namespace ProgramSources
 {
     public class HashSHA1 : IHash
     {
+        /// <summary>
+        /// This method calculate hash of input data
+        /// </summary>
+        /// <param name="data">input data</param>
+        /// <param name="size">maxim value of hash</param>
+        /// <returns>hash of input data</returns>
         public int Hash(string data, int size)
         {
             var hash = new StringBuilder();
