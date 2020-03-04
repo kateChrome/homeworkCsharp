@@ -59,7 +59,7 @@ namespace ProgramSources
         {
             if (head == null)
             {
-                throw new Exception("head == null");
+                throw new Exception("list is empty now");
             }
             else if (head.data == data)
             {
@@ -105,7 +105,7 @@ namespace ProgramSources
             Console.WriteLine($"{currentNode.data} ");
         }
 
-        public string[] returnAllNodes()
+        public string[] ReturnAllNodes()
         {
             var currentNode = head;
 

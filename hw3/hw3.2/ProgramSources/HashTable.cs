@@ -14,7 +14,7 @@ namespace ProgramSources
 
         public HashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
 
-        private void changeHashTableSize(int size)
+        private void ChangeHashTableSize(int size)
         {
 
             var newTable = new List[size];
@@ -29,7 +29,7 @@ namespace ProgramSources
                 {
                     continue;
                 }
-                var temporaryNodes = table[i].returnAllNodes();
+                var temporaryNodes = table[i].ReturnAllNodes();
                 foreach (var item in temporaryNodes)
                 {
                     newTable[hash.Hash(item, newTable.Length)].Append(item);
@@ -46,7 +46,7 @@ namespace ProgramSources
                 return;
             }
 
-            changeHashTableSize(table.Length * 2);
+            ChangeHashTableSize(table.Length * 2);
         }
 
         public void AddValue(string data)
@@ -113,7 +113,7 @@ namespace ProgramSources
             this.hash = hash;
             var newTable = new List[size];
            
-            changeHashTableSize(size);
+            ChangeHashTableSize(size);
         }
     }
 }
