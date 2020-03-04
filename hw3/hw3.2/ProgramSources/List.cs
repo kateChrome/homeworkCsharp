@@ -10,6 +10,7 @@ namespace ProgramSources
             public Node next;
 
             public Node(string data) { this.data = data; next = null; }
+
             public Node(string data, Node next) { this.data = data; this.next = next; }
         }
 
@@ -19,6 +20,7 @@ namespace ProgramSources
         private int size;
 
         public List() { head = null; tail = null; size = 0; }
+        
         public List(string Data) { head = new Node(Data); tail = head; size = 1; }
 
         public bool IsOnTheList(string data)
