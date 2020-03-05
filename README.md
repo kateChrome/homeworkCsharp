@@ -18,7 +18,7 @@ Here's homework on programming and materials from programming lessons.
 ## Homework plan
 
 <p align="center">
-  <img src="http://yuml.me/diagram/scruffy/class/[note: Homework plan{bg:green}], [Homework number], [Homework number]->        [materail from lesson], [Homework number]->[list of tasks and their solutions (optional)], [list of tasks and their solutions   (optional)]->[task №1], [task №1]-.->[solution №1], [list of tasks and their solutions (optional)]->[task №2], [list of tasks and their solutions (optional)]->[task №3], [task №3]-.->[solution №3]" >
+<img src="http://yuml.me/diagram/scruffy/class/[note: Homework plan{bg:green}], [Homework number], [Homework number]-> [materail from lesson], [Homework number]->[list of tasks and their solutions (optional)], [list of tasks and their solutions (optional)]->[task №1], [task №1]-.->[solution №1], [list of tasks and their solutions (optional)]->[task №2], [list of tasks and their solutions (optional)]->[task №3], [task №3]-.->[solution №3]" >
 </p>
 
 ## Homework №1 
