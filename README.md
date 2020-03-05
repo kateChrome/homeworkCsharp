@@ -8,11 +8,16 @@ Here's homework on programming and materials from programming lessons.
 
 ## Navigation menu
 
-[SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) | <img src="http://yuml.me/diagram/scruffy/class/[note: Homework plan{bg:green}], [Homework number], [Homework number]->[materail from lesson], [Homework number]->[list of tasks and their solutions (optional)], [list of tasks and their solutions (optional)]->[task №1], [task №1]-.->[solution №1], [list of tasks and their solutions (optional)]->[task №2], [list of tasks and their solutions (optional)]->[task №3], [task №3]-.->[solution №3]" >
+[SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) | 
 ----------- |
+[Homework plan](https://github.com/kateChrome/homeworkCoctothorpe#homework-plan)
 [Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 [Homework №3](https://github.com/kateChrome/homeworkCoctothorpe#homework-3) |
+
+## Homework plan
+
+<img src="http://yuml.me/diagram/scruffy/class/[note: Homework plan{bg:green}], [Homework number], [Homework number]->[materail from lesson], [Homework number]->[list of tasks and their solutions (optional)], [list of tasks and their solutions (optional)]->[task №1], [task №1]-.->[solution №1], [list of tasks and their solutions (optional)]->[task №2], [list of tasks and their solutions (optional)]->[task №3], [task №3]-.->[solution №3]" >
 
 ## Homework №1 
 
