@@ -6,7 +6,7 @@
 
 Here's homework on programming and materials from programming lessons.
 
-<img src="http://yuml.me/diagram/scruffy/class/[Customer]<>1->*[Order], [Customer]-[note: Aggregate Root {bg:cornsilk}]" >
+<img src="http://yuml.me/diagram/scruffy/class/[note: note plan{bg:green}], [Homework number], [Homework number]->[materail from lesson], [Homework number]->[list of tasks and them solutions], [list of tasks and them solutions]->[task], [task]optional-.->[solution]" >
 
 ## Navigation menu
 
