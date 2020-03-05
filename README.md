@@ -6,6 +6,8 @@
 
 Here's homework on programming and materials from programming lessons.
 
+<img src="http://yuml.me/diagram/scruffy/class/[Customer]<>1->*[Order], [Customer]-[note: Aggregate Root {bg:cornsilk}]" >
+
 ## Navigation menu
 
 [SPBU homework](https://github.com/kateChrome/homeworkCoctothorpe) |
