@@ -38,7 +38,7 @@ Here's homework on programming and materials from programming lessons.
 
 ## Homework №2 
 
->[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson2)
+>[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson2)
 
 1. Написать связный список в виде класса. От списка хочется:
     - Добавлять/удалять элемент по произвольной позиции, задаваемой целым числом.
@@ -51,7 +51,7 @@ Here's homework on programming and materials from programming lessons.
 
 ## Homework №3
 
->[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson3)
+>[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson3)
 
 1. Написать юнит-тесты к задаче 3 из предыдущего задания.
 
