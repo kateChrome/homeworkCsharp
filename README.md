@@ -14,6 +14,7 @@ Here's homework on programming and materials from programming lessons.
 [Homework №1](https://github.com/kateChrome/homeworkCoctothorpe#homework-1) |
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 [Homework №3](https://github.com/kateChrome/homeworkCoctothorpe#homework-3) |
+[Homework №4](https://github.com/kateChrome/homeworkCoctothorpe#homework-4) |
 
 ## Homework plan
 
@@ -56,9 +57,9 @@ Here's homework on programming and materials from programming lessons.
 
 2. Модифицировать хеш-таблицу из задачи 2 предыдущей работы так, чтобы хеш-функцию можно было менять в зависимости от выбора пользователя, причём хеш-функцию должно быть можно передавать из использующего хеш-таблицу кода в виде объекта некоторого класса, реализующего некоторый интерфейс. Юнит-тесты и коментарии в формате XML Documentation обязательны.
 
-## Homework №3
+## Homework №4
 
->[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson3)
+>[materail from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson4)
 
 1. Решить задачу о вычислении выражения по дереву разбора из прошлого семестра. Реализовать иерархию классов, описывающих дерево разбора, используя их, реализовать класс, вычисляющий значение выражения по дереву. Классы, представляющие операнды и операторы, должны сами уметь себя вычислять и печатать.
 
