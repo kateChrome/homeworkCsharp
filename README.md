@@ -53,7 +53,7 @@ Here's homework on programming and materials from programming lessons.
 
 >[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson3)
 
-1. Написать юнит-тесты к задаче 3 из предыдущего задания.[solution](https://github.com/kateChrome/homeworkCOctothorpe/tree/master/hw2/hw3.1)
+1. Написать юнит-тесты к задаче 3 из предыдущего задания. [solution](https://github.com/kateChrome/homeworkCOctothorpe/tree/master/hw2/hw3.1)
 
 2. Модифицировать хеш-таблицу из задачи 2 предыдущей работы так, чтобы хеш-функцию можно было менять в зависимости от выбора пользователя, причём хеш-функцию должно быть можно передавать из использующего хеш-таблицу кода в виде объекта некоторого класса, реализующего некоторый интерфейс. Юнит-тесты и коментарии в формате XML Documentation обязательны.
 
