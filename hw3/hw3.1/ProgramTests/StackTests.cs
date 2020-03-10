@@ -30,7 +30,7 @@ namespace Program.Services.Tests
 
         static object[] PopArrayStackCases =
         {
-                new object[] { new ListStack() }
+                new object[] { new ArrayStack() }
         };
 
         static object[] PopListStackCases =
