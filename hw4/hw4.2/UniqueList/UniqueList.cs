@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace UniqueList
 {
-    public class UniqueList
+    public class UniqueList<T>
     {
         private List<T> uniqueList;
-        private Type type;
 
-        public UniqueList(Type type) { uniqueList = new List<type>(); this.type = type; }
+        public UniqueList() { uniqueList = new List<T>(); }
 
-        public void AddData(type data)
+        public void AddData(T data)
         {
             if (uniqueList.Exists(data))
             {
@@ -21,7 +20,7 @@ namespace UniqueList
             uniqueList.Add(data);
         }
 
-        public void RemoveData(type data)
+        public void RemoveData(T data)
         {
             if (!uniqueList.Exists(data))
             {
