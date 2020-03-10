@@ -15,7 +15,7 @@ namespace ProgramSources
         /// <param name="data">input data</param>
         /// <param name="size">maxim value of hash</param>
         /// <returns>hash of input data</returns>
-        public int Hash(string data, int size)
+        public int Hash(string data)
         {
             var hash = new StringBuilder();
             var md5provider = new SHA1CryptoServiceProvider();
@@ -25,7 +25,7 @@ namespace ProgramSources
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16) % size;
+            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16);
         }
     }
 }

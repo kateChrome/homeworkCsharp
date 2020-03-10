@@ -17,15 +17,27 @@ namespace ProgramSources
         /// <summary>
         /// get number of items in hash table
         /// </summary>
-        public int NumberOfItems { get { return numberOfItems; } }
+        public int NumberOfItems => numberOfItems;
 
         private IHash hash;
 
         /// <summary>
         /// set hash table and its hash function
         /// </summary>
-        /// <param name="hash"></param>
-        public HashTable(IHash hash) { table = null; numberOfItems = 0; this.hash = hash; }
+        public HashTable(IHash hash) 
+        { 
+            table = null; 
+            numberOfItems = 0; 
+            this.hash = hash; 
+        }
+
+        /// <summary>
+        /// get the ash value in absolute value and modulo size
+        /// </summary>
+        /// <param name="item">input data</param>
+        /// <param name="size">current size</param>
+        private int GetCorrectHash(string item, int size) 
+        => Math.Abs(hash.Hash(item)) % size;
 
         /// <summary>
         /// resize hash table
@@ -49,7 +61,7 @@ namespace ProgramSources
                 var temporaryNodes = table[i].ReturnAllNodes();
                 foreach (var item in temporaryNodes)
                 {
-                    newTable[hash.Hash(item, newTable.Length)].Append(item);
+                    newTable[GetCorrectHash(item, newTable.Length)].Append(item);
                 }
             }
             table = newTable;
@@ -82,12 +94,12 @@ namespace ProgramSources
                 {
                     table[i] = new List();
                 }
-                table[hash.Hash(data, table.Length)].Append(data);
+                table[GetCorrectHash(data, table.Length)].Append(data);
                 numberOfItems++;
                 FillFactorCheck();
                 return;
             }
-            table[hash.Hash(data, table.Length)].Append(data);
+            table[GetCorrectHash(data, table.Length)].Append(data);
             numberOfItems++;
             FillFactorCheck();
         }
@@ -103,9 +115,9 @@ namespace ProgramSources
             {
                 throw new Exception("table does not exist now");
             }
-            else if (table[hash.Hash(data, table.Length)].IsOnTheList(data))
+            else if (table[GetCorrectHash(data, table.Length)].IsOnTheList(data))
             {
-                table[hash.Hash(data, table.Length)].DeleteData(data);
+                table[GetCorrectHash(data, table.Length)].DeleteData(data);
                 numberOfItems--;
                 return true;
             }
@@ -125,7 +137,7 @@ namespace ProgramSources
                 throw new Exception("table does not exist now");
             }
 
-            return table[hash.Hash(data, table.Length)].IsOnTheList(data);
+            return table[GetCorrectHash(data, table.Length)].IsOnTheList(data);
         }
 
         /// <summary>
@@ -139,7 +151,7 @@ namespace ProgramSources
                 {
                     continue;
                 }
-                Console.Write($"{hash.Hash(table[i].ReturnHeadValue(), table.Length)}: ");
+                Console.Write($"{GetCorrectHash(table[i].ReturnHeadValue(), table.Length)}: ");
                 table[i].PrintList();
             }
             Console.WriteLine();
@@ -163,7 +175,7 @@ namespace ProgramSources
         /// <returns>hash value of input data</returns>
         public int GetHash(string data)
         {
-            return hash.Hash(data, HashTable.size);
+            return GetCorrectHash(data, HashTable.size);
         }
     }
 }

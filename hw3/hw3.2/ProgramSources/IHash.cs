@@ -9,8 +9,6 @@ namespace ProgramSources
         /// Get hash value of input data
         /// </summary>
         /// <param name="data">input data</param>
-        /// <param name="size">maximum value of hash</param>
-        /// <returns></returns>
-        int Hash(string data, int size);
+        int Hash(string data);
     }
 }

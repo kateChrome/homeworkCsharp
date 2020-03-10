@@ -13,9 +13,8 @@ namespace ProgramSources
         /// This method calculate hash of input data
         /// </summary>
         /// <param name="data">input data</param>
-        /// <param name="size">maxim value of hash</param>
         /// <returns>hash of input data</returns>
-        public int Hash(string data, int size)
+        public int Hash(string data)
         {
             StringBuilder hash = new StringBuilder();
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
@@ -25,7 +24,7 @@ namespace ProgramSources
             {
                 hash.Append(bytes[i].ToString("x2"));
             }
-            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16) % size;
+            return Convert.ToInt32(hash.ToString().Substring(0, 5), 16);
         }
     }
 }
