@@ -1,3 +1,5 @@
+using System;
+
 namespace src
 {
     public class Node
@@ -5,7 +7,7 @@ namespace src
         private string data;
         public string Data
         {
-            get 
+            get
             {
                 return data;
             }
@@ -18,7 +20,7 @@ namespace src
         private Node rightNode;
         public Node RightNode
         {
-            get 
+            get
             {
                 return rightNode;
             }
@@ -30,8 +32,8 @@ namespace src
 
         private Node leftNode;
         public Node LeftNode
-         {
-            get 
+        {
+            get
             {
                 return leftNode;
             }
