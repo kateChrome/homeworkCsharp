@@ -70,7 +70,7 @@ namespace src
 
         private void CalculateCurrentBranch(Node currentNode)
         {
-            if (isNumber(currentNode.Data) || currentNode == null || currentNode.LeftNode == null || currentNode.RightNode == null)
+            if (isNumber(currentNode.Data))
             {
                 return;
             }
