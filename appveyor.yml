@@ -1,5 +1,5 @@
 version: 1.0.{build}
 
 build:
-
   verbosity: minimal
+  project: hw2/hw2.1/hw2.1.csproj
