@@ -1,5 +1,9 @@
-version: 1.0.{build}
 image: Ubuntu
+
+version: 1.0.{build}
+
 build:
-  verbosity: minimal
-  project: hw2/hw2.1/hw2.1.csproj
+  project: /hw3/hw3.1/hw3.1.sln
+
+test_script:
+  - dotnet test /hw3/hw3.1/hw3.1.sln
