@@ -1,5 +1,5 @@
 
-build:
+build_script:
   - dotnet build hw3/hw3.1/hw3.1.sln
 
 test_script:
