@@ -15,6 +15,7 @@ Here's homework on programming and materials from programming lessons.
 [Homework №2](https://github.com/kateChrome/homeworkCoctothorpe#homework-2) |
 [Homework №3](https://github.com/kateChrome/homeworkCoctothorpe#homework-3) |
 [Homework №4](https://github.com/kateChrome/homeworkCoctothorpe#homework-4) |
+[Homework №5](https://github.com/kateChrome/homeworkCoctothorpe#homework-5) |
 
 ## Homework plan
 
@@ -69,3 +70,8 @@ Here's homework on programming and materials from programming lessons.
 
 2. Унаследовавшись от класса список, реализовать класс UniqueList, который не содержит повторяющихся значений. Реализовать классы исключений, которые генерируются при попытке добавления в такой список уже существующего или при попытке удаления несуществующего элемента.
 
+## Homework №5
+
+>[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson5)
+
+1. Настроить сборку на AppVeyor одной из предыдущих домашек. В качестве решения приложить ссылку на успешно собранный пуллреквест с appveyor.yml.
