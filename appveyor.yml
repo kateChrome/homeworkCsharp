@@ -1,6 +1,6 @@
 
 build:
-  project: hw3/hw3.1/hw3.1.sln
+  - dotnet build hw3/hw3.1/hw3.1.sln
 
 test_script:
   - dotnet test hw3/hw3.1/hw3.1.sln
