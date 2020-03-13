@@ -1,7 +1,5 @@
 image: Ubuntu
 
-version: 1.0.{build}
-
 build:
   project: hw3/hw3.1/hw3.1.sln
 
