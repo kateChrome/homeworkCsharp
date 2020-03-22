@@ -7,46 +7,33 @@ namespace UniqueList
     /// Class with implementation unique list structure.
     /// </summary>
     /// <typeparam name="T">type of items.</typeparam>
-    public class UniqueList<T>
+    public class UniqueList<T> : List<T>
     {
-        private List<T> uniqueList;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UniqueList"/> class.
-        /// </summary>
-        /// <typeparam name="T">type of items.</typeparam>
-        public UniqueList() { uniqueList = new List<T>(); }
-
         /// <summary>
         /// Add data to tail of the unique list.
         /// </summary>
-        public void AddData(T data)
+        public new void Add(T data)
         {
-            if (uniqueList.Contains(data))
+            if (this.Contains(data))
             {
                 throw new ElementAlreadyExistException($"{data} already exist in the unique list");
             }
 
-            uniqueList.Add(data);
+            base.Add(data);
         }
 
         /// <summary>
         /// Remove data from the unique list.
         /// </summary>
-        public void RemoveData(T data)
+        public new void Remove(T data)
         {
-            if (!uniqueList.Contains(data))
+            if (!this.Contains(data))
             {
                 throw new ElementDoesNotExistException($"{data} does not exist in the unique list");
             }
 
-            uniqueList.Remove(data);
+            base.Remove(data);
         }
-
-        /// <summary>
-        /// Get size of the unique list.
-        /// </summary>
-        public int GetSizeOfList() => uniqueList.Count;
 
         /// <summary>
         /// Сheck the the unique list for emptiness 
@@ -56,14 +43,14 @@ namespace UniqueList
         /// <summary>
         /// add data by index in the unique list.
         /// </summary>
-        public void InsertData(int index, T data)
+        public new void Insert(int index, T data)
         {
-            if (uniqueList.Contains(data))
+            if (this.Contains(data))
             {
                 throw new ElementAlreadyExistException($"{data} already exist in the unique list");
             }
 
-            uniqueList.Insert(index, data);
+            base.Insert(index, data);
         }
 
         /// <summary>
@@ -72,7 +59,17 @@ namespace UniqueList
         /// <param name="index"></param>
         public void RemoveDataByIndex(int index)
         {
-            uniqueList.Remove(uniqueList[index]);
+            this.Remove(this[index]);
         }
+
+        /// <summary>
+        /// Method hiding
+        /// </summary>
+        public new void AddRange(IEnumerable<T> collection){ }
+
+        /// <summary>
+        /// Method hiding
+        /// </summary>
+        public new void InsertRange(int index, IEnumerable<T> collection) { }
     }
 }
