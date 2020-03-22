@@ -74,4 +74,4 @@ Here's homework on programming and materials from programming lessons.
 
 >[material from lesson](https://github.com/kateChrome/homeworkCoctothorpe/tree/master/data/lesson5)
 
-1. Настроить сборку на AppVeyor одной из предыдущих домашек. В качестве решения приложить ссылку на успешно собранный пуллреквест с appveyor.yml.
+1. Настроить сборку на AppVeyor одной из предыдущих домашек. В качестве решения приложить ссылку на успешно собранный пуллреквест с appveyor.yml. [solution](https://github.com/kateChrome/homeworkCsharp/tree/master/hw5/hw5.1)
