@@ -29,13 +29,6 @@ namespace UniqueList
         }
 
         [Test]
-        public void GetSizeOfListTest()
-        {
-            uniqueList.Add(1);
-            Assert.AreEqual(1, uniqueList.GetSizeOfList());
-        }
-
-        [Test]
         public void IsEmptyTest()
         {
             Assert.IsTrue(uniqueList.IsEmpty());

@@ -38,7 +38,7 @@ namespace UniqueList
         /// <summary>
         /// Сheck the the unique list for emptiness 
         /// </summary>
-        public bool IsEmpty() => GetSizeOfList() == 0;
+        public bool IsEmpty() => Count == 0;
 
         /// <summary>
         /// add data by index in the unique list.
