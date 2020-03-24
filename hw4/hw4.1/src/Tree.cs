@@ -43,29 +43,14 @@ namespace src
 
         private string calulateSimpleExpression(string currentOperator, int operand1, int operand2)
         {
-            switch (currentOperator)
+            return currentOperator switch
             {
-                case "+":
-                    {
-                        return (operand1 + operand2).ToString();
-                    }
-                case "-":
-                    {
-                        return (operand1 - operand2).ToString();
-                    }
-                case "*":
-                    {
-                        return (operand1 * operand2).ToString();
-                    }
-                case "/":
-                    {
-                        return (operand1 / operand2).ToString();
-                    }
-                default:
-                    {
-                        return "lol";
-                    }
-            }
+                "+" => new Addition(operand1, operand2),
+                "-" => new Substraction(operand1, operand2),
+                "*" => new Multiplication(operand1, operand2),
+                "/" => new Division(operand1, operand2),
+                _ => throw new System.ArgumentException("Wrong string inside a file."),
+            };
         }
 
         private void CalculateCurrentBranch(Node currentNode)
@@ -79,7 +64,7 @@ namespace src
             CalculateCurrentBranch(currentNode.RightNode);
             if (isNumber(currentNode.LeftNode.Data) && isNumber(currentNode.RightNode.Data))
             {
-                currentNode.Data = calulateSimpleExpression(currentNode.Data, int.Parse(currentNode.LeftNode.Data), int.Parse(currentNode.RightNode.Data));
+                currentNode = calulateSimpleExpression(currentNode.Data, int.Parse(currentNode.LeftNode.Data), int.Parse(currentNode.RightNode.Data));
                 currentNode.RightNode = null;
                 currentNode.LeftNode = null;
             }
