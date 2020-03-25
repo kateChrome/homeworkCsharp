@@ -65,11 +65,11 @@ namespace UniqueList
         /// <summary>
         /// Method hiding
         /// </summary>
-        public new void AddRange(IEnumerable<T> collection){ }
+        public new void AddRange(IEnumerable<T> collection) { throw new NotImplementedException(); }
 
         /// <summary>
         /// Method hiding
         /// </summary>
-        public new void InsertRange(int index, IEnumerable<T> collection) { }
+        public new void InsertRange(int index, IEnumerable<T> collection) { throw new NotImplementedException(); }
     }
 }
