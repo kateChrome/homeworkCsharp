@@ -48,9 +48,9 @@ namespace src
         };
 
         [TestCaseSource(nameof(FoldCases))]
-        public void MapTest(List<int> inputList, int accumulator, Func<int, int, int> function, int accumulatorResult)
+        public void FoldTest(List<int> inputList, int accumulator, Func<int, int, int> function, int accumulatorAfterFold)
         {
-            Assert.IsTrue(Functions.Fold(inputList, accumulator, function) == accumulatorResult);
+            Assert.IsTrue(Functions.Fold(inputList, accumulator, function) == accumulatorAfterFold);
         }
     }
 }
