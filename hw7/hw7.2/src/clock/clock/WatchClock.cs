@@ -5,7 +5,7 @@ namespace clock
 {
     public class WatchClock
     {
-        public void WriteLine(Gdk.Window drawingArea, double Calculate, double[] Colors, int length, int width)
+        public void WriteLine(Gdk.Window drawingArea, double radians, double[] Colors, int length, int width)
         {
             Cairo.Context ring = Gdk.CairoHelper.Create(drawingArea);
 
@@ -13,7 +13,7 @@ namespace clock
             PointD finishPoint = new PointD(0, -1 * length);
 
             ring.Translate(100, 100);
-            ring.Rotate(Calculate);
+            ring.Rotate(radians);
             ring.LineWidth = width;
             ring.MoveTo(startPoint);
             ring.LineTo(finishPoint);
