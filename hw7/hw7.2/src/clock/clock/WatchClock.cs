@@ -3,8 +3,19 @@ using Cairo;
 
 namespace clock
 {
+    /// <summary>
+    /// Watch clock.
+    /// </summary>
     public class WatchClock
     {
+        /// <summary>
+        /// Writes the line.
+        /// </summary>
+        /// <param name="drawingArea">Drawing area.</param>
+        /// <param name="radians">Radians.</param>
+        /// <param name="Colors">Colors.</param>
+        /// <param name="length">Length.</param>
+        /// <param name="width">Width.</param>
         public void WriteLine(Gdk.Window drawingArea, double radians, double[] Colors, int length, int width)
         {
             Cairo.Context ring = Gdk.CairoHelper.Create(drawingArea);

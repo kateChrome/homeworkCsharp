@@ -2,10 +2,19 @@
 using Gtk;
 using clock;
 
+/// <summary>
+/// Main window.
+/// </summary>
 public partial class MainWindow : Gtk.Window
 {
+    /// <summary>
+    /// The clock.
+    /// </summary>
     WatchClock clock;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:MainWindow"/> class.
+    /// </summary>
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
         Build();
@@ -17,11 +26,17 @@ public partial class MainWindow : Gtk.Window
         ClockStart();
     }
 
+    /// <summary>
+    /// Clocks the start.
+    /// </summary>
     void ClockStart()
     {
         GLib.Timeout.Add(100, new GLib.TimeoutHandler(Update));
     }
 
+    /// <summary>
+    /// Update clock.
+    /// </summary>
     bool Update()
     {
         drawingArea.GdkWindow.Clear();
