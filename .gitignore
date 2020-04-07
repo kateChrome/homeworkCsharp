@@ -1,3 +1,6 @@
 .gitignore
 bin/
 obj/
+gtk-gui/
+Properties/
+.vs/
