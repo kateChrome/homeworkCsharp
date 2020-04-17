@@ -4,3 +4,4 @@ build_script:
 
 test_script:
   - dotnet test test/test1/test1.sln
+  
