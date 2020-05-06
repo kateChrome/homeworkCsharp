@@ -11,8 +11,8 @@ namespace Set
         private class SetElement<T> : IEnumerable<T>
         {
             public T Data { get; private set; }
-            public SetElement<T> LeftSetElement { set; get; }
-            public SetElement<T> RightSetElement { set; get; }
+            public SetElement<T>? LeftSetElement { set; get; }
+            public SetElement<T>? RightSetElement { set; get; }
 
             public SetElement(T data)
             {
@@ -51,7 +51,7 @@ namespace Set
         public int Count { set; get; }
         public bool IsReadOnly { set; get; }
 
-        private SetElement<T> root;
+        private SetElement<T>? root;
         private readonly IComparer<T> _comparer;
 
         public Set(IComparer<T> comparer, bool isReadOnly)
@@ -62,10 +62,10 @@ namespace Set
             this.root = new SetElement<T>();
         }
 
-        private (SetElement<T> currentSetElement, SetElement<T> parentSetElement)
+        private (SetElement<T>? currentSetElement, SetElement<T>? parentSetElement)
             FindCurrentElementAndThemParent(T data)
         {
-            var currentSetElement = root;
+            SetElement<T>? currentSetElement = root;
             var parentSetElement = root;
 
             while (currentSetElement != null)
@@ -76,10 +76,12 @@ namespace Set
                 }
                 else if (this._comparer.Compare(data, currentSetElement.Data) < 0)
                 {
+                    parentSetElement = currentSetElement;
                     currentSetElement = currentSetElement.LeftSetElement;
                 }
                 else
                 {
+                    parentSetElement = currentSetElement;
                     currentSetElement = currentSetElement.RightSetElement;
                 }
             }
@@ -87,18 +89,18 @@ namespace Set
             return (null, parentSetElement);
         }
 
-        private SetElement<T> Find(T data) => FindCurrentElementAndThemParent(data).currentSetElement;
+        private SetElement<T>? Find(T data) => FindCurrentElementAndThemParent(data).currentSetElement;
 
-        private SetElement<T> FindParent(T data) => FindCurrentElementAndThemParent(data).parentSetElement;
+        private SetElement<T>? FindParent(T data) => FindCurrentElementAndThemParent(data).parentSetElement;
 
         public bool Add(T data)
         {
-            if (Contains(data))
+            var parentSetElement = FindParent(data);
+            if (Contains(data) || parentSetElement == null)
             {
                 return false;
             }
 
-            var parentSetElement = FindParent(data);
             Count++;
             if (this._comparer.Compare(data, parentSetElement.Data) < 0)
             {
@@ -120,7 +122,7 @@ namespace Set
 
         public bool Contains(T data) => Find(data) != null;
         
-        public void CopyTo(T[] array, int arrayIndex)
+        public void CopyTo(T[]? array, int arrayIndex)
         {
             if (array == null)
             {
@@ -133,6 +135,12 @@ namespace Set
             else if (array.Length - arrayIndex - 1 < Count)
             {
                 throw new ArgumentException($"The number of elements in the source ICollection<T> is greater than the available space from {nameof(arrayIndex)} to the end of the destination {nameof(array)}");
+            }
+
+            foreach (var item in this)
+            {
+                array[arrayIndex] = item;
+                arrayIndex++;
             }
         }
 
