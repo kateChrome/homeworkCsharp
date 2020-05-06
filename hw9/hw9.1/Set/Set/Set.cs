@@ -10,7 +10,7 @@ namespace Set
     {
         private class SetElement<T> : IEnumerable<T>
         {
-            public T Data { get; private set; }
+            public T Data { get; set; }
             public SetElement<T>? LeftSetElement { set; get; }
             public SetElement<T>? RightSetElement { set; get; }
 
@@ -89,14 +89,18 @@ namespace Set
             return (null, parentSetElement);
         }
 
-        private SetElement<T>? Find(T data) => FindCurrentElementAndThemParent(data).currentSetElement;
-
-        private SetElement<T>? FindParent(T data) => FindCurrentElementAndThemParent(data).parentSetElement;
-
         public bool Add(T data)
         {
-            var parentSetElement = FindParent(data);
-            if (Contains(data) || parentSetElement == null)
+            if (root == null)
+            {
+                root = new SetElement<T>(data);
+                return true;
+            }
+
+
+            var parentAndCurrentElements = FindCurrentElementAndThemParent(data);
+            var parentSetElement = parentAndCurrentElements.parentSetElement;
+            if (parentAndCurrentElements.currentSetElement != null || parentSetElement == null)
             {
                 return false;
             }
@@ -120,8 +124,8 @@ namespace Set
             this.Count = 0;
         }
 
-        public bool Contains(T data) => Find(data) != null;
-        
+        public bool Contains(T data) => FindCurrentElementAndThemParent(data).currentSetElement != null;
+
         public void CopyTo(T[]? array, int arrayIndex)
         {
             if (array == null)
@@ -130,11 +134,12 @@ namespace Set
             }
             else if (arrayIndex < 0)
             {
-                throw new ArgumentOutOfRangeException($"array index {nameof(arrayIndex)} isn't a positive number");
+                throw new ArgumentOutOfRangeException($"array index {nameof(arrayIndex)} isn't a positive number.");
             }
             else if (array.Length - arrayIndex - 1 < Count)
             {
-                throw new ArgumentException($"The number of elements in the source ICollection<T> is greater than the available space from {nameof(arrayIndex)} to the end of the destination {nameof(array)}");
+                throw new ArgumentException(
+                    $"The number of elements in the source ICollection<T> is greater than the available space from {nameof(arrayIndex)} to the end of the destination {nameof(array)}.");
             }
 
             foreach (var item in this)
@@ -144,5 +149,112 @@ namespace Set
             }
         }
 
+        public void ExceptWith(System.Collections.Generic.IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"Array {nameof(other)} is a null.");
+            }
+
+            foreach (var item in other)
+            {
+                this.Remove(item);
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator() =>
+            this.root != null ? this.root.GetEnumerator() : Enumerable.Empty<T>().GetEnumerator();
+
+        public void IntersectWith(System.Collections.Generic.IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"Array {nameof(other)} is a null.");
+            }
+
+            var temporarySet = new Set<T>(_comparer, IsReadOnly);
+
+            foreach (var item in other)
+            {
+                if (this.Contains(item))
+                {
+                    temporarySet.Add(item);
+                }
+            }
+
+            Count = temporarySet.Count;
+            root = temporarySet.root;
+        }
+
+        public bool IsSubsetOf(System.Collections.Generic.IEnumerable<T> other)
+        {
+
+        }
+
+        private T GetMinimumDataFromCurrentSetElement(SetElement<T> currentSetElement)
+        {
+            while (currentSetElement.LeftSetElement != null)
+            {
+                currentSetElement = currentSetElement.LeftSetElement;
+            }
+
+            return currentSetElement.Data;
+        }
+
+        private SetElement<T>? RemoveFromCurrentSetElement(SetElement<T>? currentSetElement, T data)
+        {
+            if (currentSetElement == null)
+            {
+                return null;
+            }
+            else if (this._comparer.Compare(data, currentSetElement.Data) < 0)
+            {
+                currentSetElement.LeftSetElement = RemoveFromCurrentSetElement(currentSetElement.LeftSetElement, data);
+            }
+            else if (this._comparer.Compare(data, currentSetElement.Data) > 0)
+            {
+                currentSetElement.RightSetElement =
+                    RemoveFromCurrentSetElement(currentSetElement.RightSetElement, data);
+            }
+            else if (currentSetElement.RightSetElement != null && currentSetElement.RightSetElement != null)
+            {
+                currentSetElement.Data = GetMinimumDataFromCurrentSetElement(currentSetElement.RightSetElement);
+                currentSetElement.RightSetElement =
+                    RemoveFromCurrentSetElement(currentSetElement.RightSetElement, currentSetElement.Data);
+            }
+            else
+            {
+                if (currentSetElement.LeftSetElement != null)
+                {
+                    currentSetElement = currentSetElement.LeftSetElement;
+                }
+                else if (currentSetElement.RightSetElement != null)
+                {
+                    currentSetElement = currentSetElement.RightSetElement;
+                }
+                else
+                {
+                    currentSetElement = root;
+                }
+            }
+
+            return currentSetElement;
+        }
+
+        public bool Remove(T data)
+        {
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The ICollection<T> is read-only.");
+            }
+            else if (!Contains(data))
+            {
+                return false;
+            }
+
+            RemoveFromCurrentSetElement(root, data);
+            Count--;
+            return true;
+        }
     }
 }
