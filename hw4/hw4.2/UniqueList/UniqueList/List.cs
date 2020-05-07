@@ -70,7 +70,6 @@ namespace Task2
         /// Existses the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <returns></returns>
         public bool Exists(T item)
         {
             for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
@@ -88,7 +87,6 @@ namespace Task2
         /// Finds the index.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <returns></returns>
         public int FindIndex(T item)
         {
             var index = 0;
@@ -106,11 +104,10 @@ namespace Task2
         }
 
         /// <summary>
-        /// Inserts the specified index.
+        /// Inserts item by index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void Insert(int index, T item)
         {
             var currentIndex = 0;
@@ -137,7 +134,6 @@ namespace Task2
         /// Removes the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        /// <returns></returns>
         public bool Remove(T item)
         {
             for (var currentNode = Head;
@@ -159,7 +155,6 @@ namespace Task2
         /// Removes by index.
         /// </summary>
         /// <param name="index">The index.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void RemoveAt(int index)
         {
             var currentIndex = 0;
