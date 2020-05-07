@@ -198,7 +198,7 @@ namespace UnitTestTask2
         public void RemoveAtTestHelper<T>(T item, int index, int size, T aggregate)
         {
             var list = new List<T>();
-            for (var i = 0; i < index - 1; i++)
+            for (var i = 0; i < index; i++)
             {
                 list.Add(aggregate);
             }
