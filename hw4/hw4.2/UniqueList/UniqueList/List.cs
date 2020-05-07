@@ -83,7 +83,7 @@ namespace Task2
             var currentIndex = 0;
             for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
             {
-                if (currentIndex == index)
+                if (currentIndex == index - 1)
                 {
                     var temporaryNode = currentNode.NextNode;
                     currentNode.NextNode = new Node<T>(item)
