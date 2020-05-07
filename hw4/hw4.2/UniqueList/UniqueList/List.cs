@@ -8,13 +8,11 @@ namespace Task2
     /// <summary>
     /// List class implementation.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class List<T>
     {
         /// <summary>
         /// Node class implementation.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         private class Node<T>
         {
             public T Data { private set; get; }
