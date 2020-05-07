@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UniqueList
+namespace Task2
 {
     public class Program
     {
@@ -8,7 +8,7 @@ namespace UniqueList
         {
             var list = new List<int>();
 
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 list.Add(i);
             }
@@ -19,7 +19,7 @@ namespace UniqueList
 
             list.PrintList();
 
-            for (int i = 10; i > 0; i--)
+            for (var i = 10; i > 0; i--)
             {
                 list.Add(i);
             }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UniqueList
+namespace Task2
 {
     public class List<T>
     {
