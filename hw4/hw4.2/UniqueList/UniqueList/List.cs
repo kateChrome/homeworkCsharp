@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Task2
 {
+    /// <summary>
+    /// List class implementation.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class List<T>
     {
+        /// <summary>
+        /// Node class implementation.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         private class Node<T>
         {
             public T Data { private set; get; }
@@ -22,12 +31,19 @@ namespace Task2
         private Node<T> Tail { set; get; }
         public int Count { set; get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="List{T}"/> class.
+        /// </summary>
         public List()
         {
             Head = Tail = null;
             Count = 0;
         }
 
+        /// <summary>
+        /// Adds the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
         public void Add(T item)
         {
             if (Head == null)
@@ -43,12 +59,20 @@ namespace Task2
             Count++;
         }
 
+        /// <summary>
+        /// Clears this instance.
+        /// </summary>
         public void Clear()
         {
             Head = Tail = null;
             Count = 0;
         }
 
+        /// <summary>
+        /// Existses the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
         public bool Exists(T item)
         {
             for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
@@ -62,6 +86,11 @@ namespace Task2
             return false;
         }
 
+        /// <summary>
+        /// Finds the index.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
         public int FindIndex(T item)
         {
             var index = 0;
@@ -78,6 +107,12 @@ namespace Task2
             return -1;
         }
 
+        /// <summary>
+        /// Inserts the specified index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="item">The item.</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void Insert(int index, T item)
         {
             var currentIndex = 0;
@@ -100,6 +135,11 @@ namespace Task2
             throw new ArgumentOutOfRangeException();
         }
 
+        /// <summary>
+        /// Removes the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
         public bool Remove(T item)
         {
             for (var currentNode = Head;
@@ -117,6 +157,11 @@ namespace Task2
             return false;
         }
 
+        /// <summary>
+        /// Removes by index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void RemoveAt(int index)
         {
             var currentIndex = 0;
@@ -137,6 +182,9 @@ namespace Task2
             throw new ArgumentOutOfRangeException();
         }
 
+        /// <summary>
+        /// Prints the list.
+        /// </summary>
         public void PrintList()
         {
             for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
