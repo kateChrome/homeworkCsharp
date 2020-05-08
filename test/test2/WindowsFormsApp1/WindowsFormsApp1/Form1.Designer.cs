@@ -35,7 +35,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.Location = new System.Drawing.Point(159, 163);
+            this.button1.Location = new System.Drawing.Point(143, 149);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(47, 37);
             this.button1.TabIndex = 0;
@@ -51,12 +51,13 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(138, 147);
+            this.button2.Location = new System.Drawing.Point(107, 110);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 70);
+            this.button2.Size = new System.Drawing.Size(130, 115);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             this.button2.MouseEnter += new System.EventHandler(this.button2_MouseEnter);
             // 
             // Form1

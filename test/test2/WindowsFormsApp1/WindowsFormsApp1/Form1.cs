@@ -42,10 +42,12 @@ namespace WindowsFormsApp1
             this.button1.BackColor = Color.Lime;
         }
         /// <summary>
-        /// Handles the MouseEnter event of the button1 control. Changes color when removed mouse.
+        /// Handles the MouseEnter event of the button1 control. Changes color and position when hovering mouse.
         /// </summary>
         private void button1_MouseEnter(object sender, EventArgs e)
         {
+            this.button1.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300, (Control.MousePosition.Y + 1000) % 300);
+            this.button2.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300, (Control.MousePosition.Y + 1000) % 300);
             this.button1.BackColor = Color.Red;
         }
         /// <summary>
@@ -55,6 +57,11 @@ namespace WindowsFormsApp1
         {
             this.button1.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300 , (Control.MousePosition.Y + 1000) % 300);
             this.button2.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300, (Control.MousePosition.Y + 1000) % 300);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
