@@ -58,5 +58,10 @@ namespace WindowsFormsApp1
             this.button1.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300 , (Control.MousePosition.Y + 1000) % 300);
             this.button2.Location = new System.Drawing.Point((Control.MousePosition.X + 1000) % 300, (Control.MousePosition.Y + 1000) % 300);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
