@@ -13,10 +13,10 @@ namespace Task2
         /// <summary>
         /// Node class implementation.
         /// </summary>
-        private class Node<T>
+        private class Node
         {
             public T Data { private set; get; }
-            public Node<T> NextNode { set; get; }
+            public Node NextNode { set; get; }
 
             public Node(T data)
             {
@@ -25,8 +25,8 @@ namespace Task2
             }
         }
 
-        private Node<T> Head { set; get; }
-        private Node<T> Tail { set; get; }
+        private Node _head;
+        private Node _tail;
         public int Count { set; get; }
 
         /// <summary>
@@ -34,8 +34,6 @@ namespace Task2
         /// </summary>
         public List()
         {
-            Head = Tail = null;
-            Count = 0;
         }
 
         /// <summary>
@@ -44,14 +42,15 @@ namespace Task2
         /// <param name="item">The item.</param>
         public void Add(T item)
         {
-            if (Head == null)
+            if (_head == null)
             {
-                Head = Tail = new Node<T>(item);
+                _head = new Node(item);
+                _tail = _head;
             }
             else
             {
-                Tail.NextNode = new Node<T>(item);
-                Tail = Tail.NextNode;
+                _tail.NextNode = new Node(item);
+                _tail = _tail.NextNode;
             }
 
             Count++;
@@ -62,7 +61,8 @@ namespace Task2
         /// </summary>
         public void Clear()
         {
-            Head = Tail = null;
+            _head = null;
+            _tail = null;
             Count = 0;
         }
 
@@ -72,7 +72,7 @@ namespace Task2
         /// <param name="item">The item.</param>
         public bool Exists(T item)
         {
-            for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
+            for (var currentNode = _head; currentNode != null; currentNode = currentNode.NextNode)
             {
                 if (currentNode.Data.Equals(item))
                 {
@@ -90,7 +90,7 @@ namespace Task2
         public int FindIndex(T item)
         {
             var index = 0;
-            for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
+            for (var currentNode = _head; currentNode != null; currentNode = currentNode.NextNode)
             {
                 if (currentNode.Data.Equals(item))
                 {
@@ -104,30 +104,40 @@ namespace Task2
         }
 
         /// <summary>
-        /// Inserts item by index.
+        /// Inserts item by index. The item will have the specified index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
         public void Insert(int index, T item)
         {
-            var currentIndex = 0;
-            for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
+            if (index < 0 || index > Count)
             {
-                if (currentIndex == index - 1)
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+            else if (index == 0)
+            {
+                var currentNode = new Node(item)
                 {
-                    var temporaryNode = currentNode.NextNode;
-                    currentNode.NextNode = new Node<T>(item)
-                    {
-                        NextNode = temporaryNode
-                    };
-                    Count++;
-                    return;
-                }
-
-                currentIndex++;
+                    NextNode = _head
+                };
+                _head = currentNode;
+            }
+            else if (index == Count)
+            {
+                _tail.NextNode = new Node(item);
+                _tail = _tail.NextNode;
+            }
+            else
+            {
+                var currentNode = _head;
+                for (var i = 0; i != index - 1; i++, currentNode = currentNode.NextNode) ;
+                currentNode.NextNode = new Node(item)
+                {
+                    NextNode = currentNode.NextNode
+                };
             }
 
-            throw new ArgumentOutOfRangeException();
+            Count++;
         }
 
         /// <summary>
@@ -136,20 +146,16 @@ namespace Task2
         /// <param name="item">The item.</param>
         public bool Remove(T item)
         {
-            for (var currentNode = Head;
-                currentNode.NextNode != null && currentNode != null;
-                currentNode = currentNode.NextNode)
-            {
-                if (currentNode.NextNode.Data.Equals(item))
-                {
-                    currentNode.NextNode = currentNode.NextNode.NextNode;
-                    Count--;
-                    return true;
-                }
-            }
+            var index = FindIndex(item);
 
-            return false;
+            if (index == -1)
+            {
+                return false;
+            }
+            RemoveAt(index);
+            return true;
         }
+
 
         /// <summary>
         /// Removes by index.
@@ -157,22 +163,34 @@ namespace Task2
         /// <param name="index">The index.</param>
         public void RemoveAt(int index)
         {
-            var currentIndex = 0;
-            for (var currentNode = Head;
-                currentNode.NextNode != null && currentNode != null;
-                currentNode = currentNode.NextNode)
+            if (index < 0 || index > Count)
             {
-                if (currentIndex == index - 1)
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+            else if (index == 0 && Count == 1)
+            {
+                Clear();
+            }
+            else if (index == 0)
+            {
+                _head = _head.NextNode;
+                Count--;
+            }
+            else
+            {
+                var currentNode = _head;
+                for (var i = 0; i != index - 1; i++, currentNode = currentNode.NextNode);
+                if (index == Count - 1)
+                {
+                    currentNode.NextNode = null;
+                    _tail = currentNode;
+                }
+                else
                 {
                     currentNode.NextNode = currentNode.NextNode.NextNode;
-                    Count--;
-                    return;
                 }
-
-                currentIndex++;
+                Count--;
             }
-
-            throw new ArgumentOutOfRangeException();
         }
 
         /// <summary>
@@ -180,10 +198,13 @@ namespace Task2
         /// </summary>
         public void PrintList()
         {
-            for (var currentNode = Head; currentNode != null; currentNode = currentNode.NextNode)
+            for (var currentNode = _head;
+                currentNode != null;
+                currentNode = currentNode.NextNode)
             {
                 Console.Write($"{currentNode.Data} ");
             }
+
             Console.WriteLine();
         }
     }
