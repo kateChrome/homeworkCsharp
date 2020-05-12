@@ -6,7 +6,7 @@ namespace Task2
     {
         public static void Main(string[] args)
         {
-            var list = new List<int>();
+            var list = new UniqueList<int>();
 
             for (var i = 0; i < 10; i++)
             {
@@ -14,7 +14,7 @@ namespace Task2
             }
 
             list.Insert(10, 1337);
-            
+
             list.PrintList();
 
             list.Remove(1337);

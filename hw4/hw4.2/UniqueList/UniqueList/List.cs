@@ -67,7 +67,7 @@ namespace Task2
         }
 
         /// <summary>
-        /// Existses the specified item.
+        /// Exists the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         public bool Exists(T item)
