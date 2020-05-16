@@ -9,9 +9,17 @@ namespace ConsoleGame
     {
         public static void Main(string[] args)
         {
-            String input = File.ReadAllText(@"PATH\TO\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map0");
+            string pathToMap;
+            do
+            {
+                Console.WriteLine("Enter path to map file: ");
+                pathToMap = Console.ReadLine();
+            } while (!File.Exists(pathToMap));
+            
 
-            bool[,] mapFromFile = new bool[40,40];
+            var input = File.ReadAllText(pathToMap);
+
+            var mapFromFile = new bool[40,40];
             var i = 0;
             foreach (var row in input.Split('\n'))
             {
