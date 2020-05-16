@@ -1,5 +1,8 @@
 ﻿namespace ConsoleGame
 {
+    /// <summary>
+    /// Player class implementation.
+    /// </summary>
     public class Player
     {
         public Map GameMap { set; get; }
@@ -15,10 +18,10 @@
 
         /// <summary>
         /// Change player position.
-        /// up 00
-        /// right 01
-        /// left 10
-        /// down 11
+        /// Up (false, false)
+        /// Right (false, true)
+        /// Left (true, false)
+        /// Down (true, true)
         /// </summary>
         public bool TakeOneStep((bool, bool) step)
         {

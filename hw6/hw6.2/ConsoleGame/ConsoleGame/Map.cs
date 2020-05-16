@@ -2,6 +2,9 @@
 
 namespace ConsoleGame
 {
+    /// <summary>
+    /// Map class implementation.
+    /// </summary>
     public class Map
     {
         public bool[,] GameMap { set; get; }
@@ -23,6 +26,9 @@ namespace ConsoleGame
             this.PlayerStartPosition = position;
         }
 
+        /// <summary>
+        /// Check can a player be in this position.
+        /// </summary>
         public bool IsCorrectPosition((int first, int second) playerPosition)
         {
             if (GameMap.GetLength(0) <= playerPosition.first || GameMap.GetLength(1) <= playerPosition.second)

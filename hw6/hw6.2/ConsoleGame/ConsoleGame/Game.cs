@@ -2,6 +2,9 @@
 
 namespace ConsoleGame
 {
+    /// <summary>
+    /// Game class implementation.
+    /// </summary>
     public class Game
     {
         private readonly Map _map;
@@ -13,6 +16,10 @@ namespace ConsoleGame
             this._player = new Player(this._map);
         }
 
+        /// <summary>
+        /// Starts this game.
+        /// Keyboard input processing and map redrawing.
+        /// </summary>
         public void Start()
         {
             Rendering();
@@ -23,6 +30,9 @@ namespace ConsoleGame
             }
         }
 
+        /// <summary>
+        /// Handles keystrokes and returns the corresponding tuple.
+        /// </summary>
         private (bool, bool) GetDirection()
         {
             while (true)
@@ -50,12 +60,18 @@ namespace ConsoleGame
             }
         }
 
+        /// <summary>
+        /// Renderings this game.
+        /// </summary>
         private void Rendering()
         {
             MapRendering();
             PlayerRendering();
         }
 
+        /// <summary>
+        /// Renderings this map.
+        /// </summary>
         private void MapRendering()
         {
             Console.SetCursorPosition(0,0);
@@ -74,6 +90,9 @@ namespace ConsoleGame
             }
         }
 
+        /// <summary>
+        /// Renderings this player.
+        /// </summary>
         private void PlayerRendering()
         {
             Console.SetCursorPosition(_player.LastPosition.first, _player.LastPosition.second);
