@@ -19,7 +19,7 @@ namespace ConsoleGame
             while (true)
             {
                 _player.TakeOneStep(GetDirection());
-                PlayerRendering();
+                Rendering();
             }
         }
 
@@ -66,6 +66,7 @@ namespace ConsoleGame
                     if (_map.GameMap[i, j])
                     {
                         Console.Write("#");
+                        continue;
                     }
                     Console.Write(" ");
                 }
@@ -77,6 +78,7 @@ namespace ConsoleGame
         {
             Console.SetCursorPosition(_player.Position.first, _player.Position.second);
             Console.Write("@");
+            Console.SetCursorPosition(0, 0);
         }
     }
 }
