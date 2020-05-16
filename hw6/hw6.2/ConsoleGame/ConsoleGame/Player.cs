@@ -4,11 +4,13 @@
     {
         public Map GameMap { set; get; }
         public (int first, int second) Position { set; get; }
+        public (int first, int second) LastPosition { set; get; }
 
         public Player(Map map)
         {
             this.GameMap = map;
             this.Position = map.PlayerStartPosition;
+            this.LastPosition = map.PlayerStartPosition;
         }
 
         /// <summary>
@@ -42,7 +44,9 @@
             {
                 return false;
             }
-            Position = newPosition;
+
+            this.LastPosition = Position;
+            this.Position = newPosition;
             return true;
 
         }

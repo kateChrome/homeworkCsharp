@@ -19,7 +19,7 @@ namespace ConsoleGame
             while (true)
             {
                 _player.TakeOneStep(GetDirection());
-                Rendering();
+                PlayerRendering();
             }
         }
 
@@ -76,9 +76,11 @@ namespace ConsoleGame
 
         private void PlayerRendering()
         {
+            Console.SetCursorPosition(_player.LastPosition.first, _player.LastPosition.second);
+            Console.Write(" ");
             Console.SetCursorPosition(_player.Position.first, _player.Position.second);
             Console.Write("@");
-            Console.SetCursorPosition(0, 0);
+            Console.SetCursorPosition(0,0);
         }
     }
 }
