@@ -2,28 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 
 namespace Set
 {
     public class Set<T> : ISet<T>
     {
-        private class SetElement<T> : IEnumerable<T>
+        private class SetElement : IEnumerable<T>
         {
             public T Data { get; set; }
-            public SetElement<T>? LeftSetElement { set; get; }
-            public SetElement<T>? RightSetElement { set; get; }
+            public SetElement? LeftSetElement { set; get; }
+            public SetElement? RightSetElement { set; get; }
 
             public SetElement(T data)
             {
                 this.Data = data;
-                this.LeftSetElement = this.RightSetElement = null;
-            }
-
-            public SetElement()
-            {
-                this.Data = default;
-                this.LeftSetElement = this.RightSetElement = null;
             }
 
             public IEnumerator<T> GetEnumerator()
@@ -46,12 +38,17 @@ namespace Set
                     }
                 }
             }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public int Count { set; get; }
         public bool IsReadOnly { set; get; }
 
-        private SetElement<T>? root;
+        private SetElement? _root;
         private readonly IComparer<T> _comparer;
 
         public Set(IComparer<T> comparer, bool isReadOnly)
@@ -59,14 +56,13 @@ namespace Set
             this.Count = 0;
             this.IsReadOnly = isReadOnly;
             this._comparer = comparer;
-            this.root = new SetElement<T>();
         }
 
-        private (SetElement<T>? currentSetElement, SetElement<T>? parentSetElement)
+        private (SetElement? currentSetElement, SetElement? parentSetElement)
             FindCurrentElementAndThemParent(T data)
         {
-            SetElement<T>? currentSetElement = root;
-            var parentSetElement = root;
+            SetElement? currentSetElement = _root;
+            var parentSetElement = _root;
 
             while (currentSetElement != null)
             {
@@ -91,9 +87,10 @@ namespace Set
 
         public bool Add(T data)
         {
-            if (root == null)
+            if (_root == null)
             {
-                root = new SetElement<T>(data);
+                _root = new SetElement(data);
+                Count++;
                 return true;
             }
 
@@ -108,19 +105,24 @@ namespace Set
             Count++;
             if (this._comparer.Compare(data, parentSetElement.Data) < 0)
             {
-                parentSetElement.LeftSetElement = new SetElement<T>(data);
+                parentSetElement.LeftSetElement = new SetElement(data);
                 return true;
             }
             else
             {
-                parentSetElement.RightSetElement = new SetElement<T>(data);
+                parentSetElement.RightSetElement = new SetElement(data);
                 return true;
             }
         }
 
         public void Clear()
         {
-            this.root = null;
+            if (IsReadOnly)
+            {
+                throw new NotSupportedException("The ICollection object is read-only.");
+            }
+
+            this._root = null;
             this.Count = 0;
         }
 
@@ -163,7 +165,7 @@ namespace Set
         }
 
         public IEnumerator<T> GetEnumerator() =>
-            this.root != null ? this.root.GetEnumerator() : Enumerable.Empty<T>().GetEnumerator();
+            this._root != null ? this._root.GetEnumerator() : Enumerable.Empty<T>().GetEnumerator();
 
         public void IntersectWith(System.Collections.Generic.IEnumerable<T>? other)
         {
@@ -183,15 +185,93 @@ namespace Set
             }
 
             Count = temporarySet.Count;
-            root = temporarySet.root;
+            _root = temporarySet._root;
         }
 
-        public bool IsSubsetOf(System.Collections.Generic.IEnumerable<T> other)
+        public bool IsProperSubsetOf(IEnumerable<T>? other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
 
+            return this.IsSubsetOf(other) && !this.SetEquals(other);
         }
 
-        private T GetMinimumDataFromCurrentSetElement(SetElement<T> currentSetElement)
+        public bool IsProperSupersetOf(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            return this.IsSupersetOf(other) && !this.SetEquals(other);
+        }
+
+        public bool IsSubsetOf(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            var counter = 0;
+
+            foreach (var item in other)
+            {
+                if (this.Contains(item))
+                {
+                    counter++;
+                }
+            }
+
+            return counter == this.Count;
+        }
+
+        public bool IsSupersetOf(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
+
+            foreach (var item in other)
+            {
+                if (!this.Contains(item))
+                {
+                    return false;
+                }
+
+                if (!comparedSet.Add(item))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool Overlaps(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            foreach (var item in other)
+            {
+                if (this.Contains(item))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static T GetMinimumDataFromCurrentSetElement(SetElement currentSetElement)
         {
             while (currentSetElement.LeftSetElement != null)
             {
@@ -201,7 +281,7 @@ namespace Set
             return currentSetElement.Data;
         }
 
-        private SetElement<T>? RemoveFromCurrentSetElement(SetElement<T>? currentSetElement, T data)
+        private SetElement? RemoveFromCurrentSetElement(SetElement? currentSetElement, T data)
         {
             if (currentSetElement == null)
             {
@@ -216,7 +296,7 @@ namespace Set
                 currentSetElement.RightSetElement =
                     RemoveFromCurrentSetElement(currentSetElement.RightSetElement, data);
             }
-            else if (currentSetElement.RightSetElement != null && currentSetElement.RightSetElement != null)
+            else if (currentSetElement.RightSetElement != null && currentSetElement.LeftSetElement != null)
             {
                 currentSetElement.Data = GetMinimumDataFromCurrentSetElement(currentSetElement.RightSetElement);
                 currentSetElement.RightSetElement =
@@ -234,7 +314,7 @@ namespace Set
                 }
                 else
                 {
-                    currentSetElement = root;
+                    currentSetElement = _root;
                 }
             }
 
@@ -252,9 +332,73 @@ namespace Set
                 return false;
             }
 
-            RemoveFromCurrentSetElement(root, data);
+            RemoveFromCurrentSetElement(_root, data);
             Count--;
             return true;
+        }
+
+        public bool SetEquals(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
+
+            foreach (var item in other)
+            {
+                if (!this.Contains(item))
+                {
+                    return false;
+                }
+
+                if (!comparedSet.Add(item))
+                {
+                    return false;
+                }
+            }
+
+            return this.Count != comparedSet.Count;
+        }
+
+        public void SymmetricExceptWith(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            foreach (var item in other)
+            {
+                if (!this.Add(item))
+                {
+                    this.Remove(item);
+                }
+            }
+        }
+
+        public void UnionWith(IEnumerable<T>? other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+
+            foreach (var item in other)
+            {
+                this.Add(item);
+            }
+        }
+
+        void ICollection<T>.Add(T item)
+        {
+            this.Add(item);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
