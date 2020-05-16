@@ -24,11 +24,11 @@ namespace ConsoleGame
 
         public bool IsCorrectPosition((int first, int second) playerPosition)
         {
-            if (GameMap.GetLength(0) < playerPosition.first || GameMap.GetLength(1) < playerPosition.second)
+            if (GameMap.GetLength(0) <= playerPosition.first + PlayerStartPosition.first || GameMap.GetLength(1) <= playerPosition.second + PlayerStartPosition.second)
             {
                 return false;
             }
-            else if (GameMap[playerPosition.first, playerPosition.second])
+            else if (GameMap[playerPosition.second, playerPosition.first])
             {
                 return false;
             }

@@ -23,19 +23,19 @@
             var newPosition = Position;
             if (step == (false, false))
             {
-                newPosition.first++;
+                newPosition.second--;
             }
             else if (step == (false, true))
             {
-                newPosition.second++;
+                newPosition.first++;
             }
             else if (step == (true, false))
             {
-                newPosition.second--;
+                newPosition.first--;
             }
             else if (step == (true, true))
             {
-                newPosition.first--;
+                newPosition.second++;
             }
 
             if (!GameMap.IsCorrectPosition(newPosition))

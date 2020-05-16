@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace ConsoleGame
 {
@@ -6,8 +9,22 @@ namespace ConsoleGame
     {
         public static void Main(string[] args)
         {
-            var array2D = new bool[,] { { false, false, false }, { false, false, false }, { false, false, false }, { false, false, false } };
-            var game = new Game(array2D, (1, 1));
+            String input = File.ReadAllText(@"S:\github\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map0");
+
+            bool[,] mapFromFile = new bool[50,50];
+            var i = 0;
+            foreach (var row in input.Split('\n'))
+            {
+                var j = 0;
+                foreach (var col in row)
+                {
+                    mapFromFile[i, j] = col == '#';
+                    j++;
+                }
+                i++;
+            }
+
+            var game = new Game(mapFromFile, (10, 10));
             game.Start();
         }
     }

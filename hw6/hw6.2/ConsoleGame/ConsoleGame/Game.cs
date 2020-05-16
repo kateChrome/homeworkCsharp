@@ -19,7 +19,7 @@ namespace ConsoleGame
             while (true)
             {
                 _player.TakeOneStep(GetDirection());
-                Rendering();
+                PlayerRendering();
             }
         }
 
