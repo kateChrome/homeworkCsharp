@@ -9,7 +9,7 @@ namespace ConsoleGame
     {
         public static void Main(string[] args)
         {
-            String input = File.ReadAllText(@"S:\github\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map1");
+            String input = File.ReadAllText(@"PATH\TO\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map0");
 
             bool[,] mapFromFile = new bool[40,40];
             var i = 0;
