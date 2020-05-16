@@ -9,9 +9,9 @@ namespace ConsoleGame
     {
         public static void Main(string[] args)
         {
-            String input = File.ReadAllText(@"S:\github\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map0");
+            String input = File.ReadAllText(@"S:\github\hw6\hw6.2\ConsoleGame\ConsoleGame\maps\map1");
 
-            bool[,] mapFromFile = new bool[50,50];
+            bool[,] mapFromFile = new bool[40,40];
             var i = 0;
             foreach (var row in input.Split('\n'))
             {
