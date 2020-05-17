@@ -138,7 +138,7 @@ namespace Set
             {
                 throw new ArgumentOutOfRangeException($"array index {nameof(arrayIndex)} isn't a positive number.");
             }
-            else if (array.Length - arrayIndex - 1 < Count)
+            else if (array.Length - arrayIndex < Count)
             {
                 throw new ArgumentException(
                     $"The number of elements in the source ICollection<T> is greater than the available space from {nameof(arrayIndex)} to the end of the destination {nameof(array)}.");
