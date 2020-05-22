@@ -20,11 +20,6 @@ namespace Test2
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainFrom(inputParameter));
             }
-            else
-            {
-
-                Console.WriteLine(@"Usage: ./Task2.exe [some even number]");
-            }
         }
     }
 }
