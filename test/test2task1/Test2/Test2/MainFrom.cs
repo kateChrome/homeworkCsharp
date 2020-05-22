@@ -38,7 +38,7 @@ namespace Test2
         /// <summary>
         /// Creating an array to be placed on the window
         /// </summary>
-        private List<int> CreatePayload()
+        public List<int> CreatePayload()
         {
             var payload = new List<int>();
             for (var i = 0; i < _inputParameter * _inputParameter / 2; i++)
