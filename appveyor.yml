@@ -1,0 +1,20 @@
+# Version format
+version: 1.0.{build}
+
+# Build worker image
+image: Visual Studio 2019
+
+# Build platform
+platform: Any CPU
+
+# Build Configuration
+configuration: Debug
+
+# MSBuild settings
+build:
+  project: test\test2task1\Test2\Test2.sln
+  verbosity: quiet
+
+# Execute script before build
+before_build:
+ - nuget restore test\test2task1\Test2\Test2.sln

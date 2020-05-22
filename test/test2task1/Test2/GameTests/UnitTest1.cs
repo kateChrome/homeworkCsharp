@@ -14,12 +14,5 @@ namespace GameTests
         {
             Assert.AreEqual(100, new MainFrom(10).CreatePayload().Count);
         }
-
-        [TestMethod]
-        public void TestGameFormLoad()
-        {
-            var game = new MainFrom(2);
-
-        }
     }
 }
