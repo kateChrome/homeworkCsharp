@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Test2
 {
-    public partial class Form1 : Form
+    public partial class MainFrom : Form
     {
-        private int inputParameter = 2;
+        private int inputParameter = 4;
         private int buttonSize = 50;
         private int font = 10;
         private int sleepTime = 500;
@@ -21,8 +21,9 @@ namespace Test2
         private bool pressedButtonExists = false;
         private Button[] pressedButtons;
 
-        public Form1()
+        public MainFrom(int inputParameter)
         {
+            this.inputParameter = inputParameter;
             InitializeComponent();
         }
 
@@ -60,14 +61,14 @@ namespace Test2
                     button.Name = payload[random].ToString();
                     payload.RemoveAt(random);
 
-                    button.Click += new EventHandler(DynamicButton_Click);
+                    button.Click += new EventHandler(ButtonClick);
 
                     this.Controls.Add(button);
                 }
             }
         }
 
-        private void DynamicButton_Click(object sender, EventArgs e)
+        private void ButtonClick(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
             clickedButton.Enabled = false;

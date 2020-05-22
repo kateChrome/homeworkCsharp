@@ -1,6 +1,6 @@
 ﻿namespace Test2
 {
-    partial class Form1
+    partial class MainFrom
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 563);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainFrom";
+            this.Text = "MainFrom";
             this.Load += new System.EventHandler(this.GameFormLoad);
             this.ResumeLayout(false);
 
