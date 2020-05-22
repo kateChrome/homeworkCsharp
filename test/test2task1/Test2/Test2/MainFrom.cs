@@ -83,11 +83,18 @@ namespace Test2
         }
 
         /// <summary>
-        /// Pressing a button, changing its characteristics depending on the situation.
+        /// Reaction button on click.
         /// </summary>
         private void ButtonClick(object sender, EventArgs e)
         {
-            var clickedButton = (Button) sender;
+            ButtonClickMethod((Button)sender);
+        }
+
+        /// <summary>
+        /// Pressing a button, changing its characteristics depending on the situation.
+        /// </summary>
+        private void ButtonClickMethod(Button clickedButton)
+        {
             clickedButton.Enabled = false;
             clickedButton.Text = clickedButton.Name;
 
@@ -102,6 +109,7 @@ namespace Test2
                 ButtonComparison();
             }
         }
+
 
         /// <summary>
         /// Comparing the contents of two buttons and changing its characteristics depending on the situation.
