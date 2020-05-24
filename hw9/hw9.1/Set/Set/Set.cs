@@ -215,15 +215,7 @@ namespace Set
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
             }
 
-            var counter = 0;
-
-            foreach (var item in other)
-            {
-                if (this.Contains(item))
-                {
-                    counter++;
-                }
-            }
+            var counter = other.Count(item => this.Contains(item));
 
             return counter == this.Count;
         }
@@ -237,20 +229,7 @@ namespace Set
 
             var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
 
-            foreach (var item in other)
-            {
-                if (!this.Contains(item))
-                {
-                    return false;
-                }
-
-                if (!comparedSet.Add(item))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return other.All(item => this.Contains(item) && comparedSet.Add(item));
         }
 
         public bool Overlaps(IEnumerable<T>? other)
@@ -260,15 +239,7 @@ namespace Set
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
             }
 
-            foreach (var item in other)
-            {
-                if (this.Contains(item))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return other.Any(item => this.Contains(item));
         }
 
         private static T GetMinimumDataFromCurrentSetElement(SetElement currentSetElement)
@@ -346,20 +317,12 @@ namespace Set
 
             var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
 
-            foreach (var item in other)
+            if (other.Any(item => !this.Contains(item) || !comparedSet.Add(item)))
             {
-                if (!this.Contains(item))
-                {
-                    return false;
-                }
-
-                if (!comparedSet.Add(item))
-                {
-                    return false;
-                }
+                return false;
             }
 
-            return this.Count != comparedSet.Count;
+            return this.Count == comparedSet.Count;
         }
 
         public void SymmetricExceptWith(IEnumerable<T>? other)
