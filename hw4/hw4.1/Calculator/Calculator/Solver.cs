@@ -55,6 +55,6 @@ namespace Calculator
         /// <summary>
         /// Calculates this expression.
         /// </summary>
-        public int Calculate() => Expression.Calculate();
+        public double Calculate() => Expression.Calculate();
     }
 }

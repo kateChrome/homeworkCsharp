@@ -7,6 +7,6 @@
 
         protected sealed override char OperationSymbol => '-';
 
-        public sealed override int Calculate() => LeftNode.Calculate() - RightNode.Calculate();
+        public sealed override double Calculate() => LeftNode.Calculate() - RightNode.Calculate();
     }
 }

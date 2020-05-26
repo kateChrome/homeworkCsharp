@@ -13,6 +13,6 @@
         /// <summary>
         /// Calculates this Node.
         /// </summary>
-        public int Calculate();
+        public double Calculate();
     }
 }

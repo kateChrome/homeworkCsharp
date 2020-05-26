@@ -12,7 +12,7 @@
             RightNode = rightNode;
         }
 
-        public abstract int Calculate();
+        public abstract double Calculate();
 
         public string Print() => $"({OperationSymbol} {LeftNode.Print()} {RightNode.Print()})";
     }
