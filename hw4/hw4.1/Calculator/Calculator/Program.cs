@@ -2,11 +2,14 @@
 
 namespace Calculator
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            const string expression = "(* (+ 1 1) 2)";
+            var tree = new Solver(expression);
+            Console.WriteLine(tree.Print());
+            Console.WriteLine(tree.Calculate());
         }
     }
 }
