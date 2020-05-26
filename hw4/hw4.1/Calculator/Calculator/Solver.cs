@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using Calculator.Nodes;
+using Calculator.Nodes.Operators;
 
 namespace Calculator
 {
-    public class Solver : INode
+    public class Solver
     {
         public INode Expression { set; get; }
+
         public Solver(string expression)
         {
             this.Expression = BuildTree(expression);
         }
 
+        /// <summary>
+        /// Split the expression string into a tree.
+        /// </summary>
         private static INode BuildTree(string expression)
         {
             var parsedExpression = expression.Replace("(", "").Replace(")", "").Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -19,6 +25,9 @@ namespace Calculator
             return BuildSubtree(queue);
         }
 
+        /// <summary>
+        /// Builds the subtree.
+        /// </summary>
         private static INode BuildSubtree(Queue<string> queue)
         {
             var currentToken = queue.Dequeue();
@@ -38,7 +47,14 @@ namespace Calculator
             };
         }
 
+        /// <summary>
+        /// Prints this expression.
+        /// </summary>
         public string Print() => Expression.Print();
+
+        /// <summary>
+        /// Calculates this expression.
+        /// </summary>
         public int Calculate() => Expression.Calculate();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Calculator
 {
@@ -6,7 +7,7 @@ namespace Calculator
     {
         public static void Main()
         {
-            const string expression = "(* (+ 1 1) 2)";
+            var expression = File.ReadAllText("expression.txt");
             var tree = new Solver(expression);
             Console.WriteLine(tree.Print());
             Console.WriteLine(tree.Calculate());

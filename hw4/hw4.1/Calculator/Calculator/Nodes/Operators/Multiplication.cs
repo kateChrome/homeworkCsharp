@@ -1,4 +1,4 @@
-﻿namespace Calculator
+﻿namespace Calculator.Nodes.Operators
 {
     public class Multiplication : Operator
     {
