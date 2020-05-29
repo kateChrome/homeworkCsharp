@@ -26,6 +26,9 @@ namespace BubbleSortGeneric
             }
         }
 
+        /// <summary>
+        /// An implementation of the generic of comparator object class. You can use your comparator.
+        /// </summary>
         private class DefaultComparer<T> : IComparer<T>
             where T : IComparable<T>
         {

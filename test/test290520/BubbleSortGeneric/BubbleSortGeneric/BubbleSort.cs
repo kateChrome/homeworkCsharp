@@ -12,6 +12,11 @@ namespace BubbleSortGeneric
         private readonly IComparer<T> _comparer;
         private readonly IList<T> _list;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BubbleSort{T}"/> class.
+        /// </summary>
+        /// <param name="unsortedList">The unsorted list.</param>
+        /// <param name="comparer">The comparer.</param>
         public BubbleSort(IList<T> unsortedList, IComparer<T> comparer)
         {
             this._list = unsortedList;
