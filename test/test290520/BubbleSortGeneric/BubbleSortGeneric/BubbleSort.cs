@@ -29,9 +29,9 @@ namespace BubbleSortGeneric
         /// <returns>Sorted list</returns>
         public IList<T> Sort()
         {
-            for (var p = 0; p <= _list.Count - 2; p++)
+            for (var j = 0; j < _list.Count - 1; j++)
             {
-                for (var i = 0; i <= _list.Count - 2; i++)
+                for (var i = 0; i < _list.Count - j - 1; i++)
                 {
                     if (this._comparer.Compare(_list[i], _list[i + 1]) > 0)
                     {
