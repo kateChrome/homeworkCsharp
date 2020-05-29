@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleSortGeneric", "BubbleSortGeneric\BubbleSortGeneric.csproj", "{6A0B9941-D681-4D74-BA32-7C1A0E7941BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestBubbleSort", "NUnitTestBubbleSort\NUnitTestBubbleSort.csproj", "{A4779F3F-4A54-415F-9A6E-7CCDBFA965FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6A0B9941-D681-4D74-BA32-7C1A0E7941BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A0B9941-D681-4D74-BA32-7C1A0E7941BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A0B9941-D681-4D74-BA32-7C1A0E7941BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4779F3F-4A54-415F-9A6E-7CCDBFA965FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4779F3F-4A54-415F-9A6E-7CCDBFA965FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4779F3F-4A54-415F-9A6E-7CCDBFA965FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4779F3F-4A54-415F-9A6E-7CCDBFA965FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

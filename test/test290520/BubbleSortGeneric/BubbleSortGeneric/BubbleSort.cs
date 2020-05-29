@@ -4,6 +4,9 @@ using System.Text;
 
 namespace BubbleSortGeneric
 {
+    /// <summary>
+    /// An implementation of the generic class containing the bubble sort method.
+    /// </summary>
     public class BubbleSort<T>
     {
         private readonly IComparer<T> _comparer;
@@ -15,6 +18,10 @@ namespace BubbleSortGeneric
             this._comparer = comparer;
         }
 
+        /// <summary>
+        /// An implement of Bubble Sort.
+        /// </summary>
+        /// <returns>Sorted list</returns>
         public IList<T> Sort()
         {
             for (var p = 0; p <= _list.Count - 2; p++)
