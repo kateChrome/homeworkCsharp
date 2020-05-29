@@ -35,9 +35,7 @@ namespace BubbleSortGeneric
                 {
                     if (this._comparer.Compare(_list[i], _list[i + 1]) > 0)
                     {
-                        var t = _list[i + 1];
-                        _list[i + 1] = _list[i];
-                        _list[i] = t;
+                        (_list[i + 1], _list[i]) = (_list[i], _list[i + 1]);
                     }
                 }
             }
