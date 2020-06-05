@@ -14,7 +14,7 @@ namespace Task2
         /// </summary>
         /// <param name="item">The item.</param>
         /// <exception cref="Task2.ElementAlreadyExistException">Element {item} already exist.</exception>
-        public new void Add(T item)
+        public override void Add(T item)
         {
             if (Exists(item))
             {

@@ -40,7 +40,7 @@ namespace Task2
         /// Adds the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        public void Add(T item)
+        public virtual void Add(T item)
         {
             if (_head == null)
             {

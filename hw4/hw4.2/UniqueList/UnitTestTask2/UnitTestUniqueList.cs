@@ -41,8 +41,8 @@ namespace UnitTestTask2
         {
             var list = new UniqueList<string>();
             list.Insert(0,"1");
-            list.Insert(1,"2");
-            list.Insert(2,"1");
+            list.Insert(0,"2");
+            list.Insert(0,"1");
         }
     }
 }
