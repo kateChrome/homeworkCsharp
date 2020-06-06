@@ -32,7 +32,7 @@ namespace Task2
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
         /// <exception cref="Task2.ElementAlreadyExistException">Element {item} already exist.</exception>
-        public new void Insert(int index, T item)
+        public override void Insert(int index, T item)
         {
             if (Exists(item))
             {
