@@ -108,7 +108,7 @@ namespace Task2
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="item">The item.</param>
-        public void Insert(int index, T item)
+        public virtual void Insert(int index, T item)
         {
             if (index < 0 || index > Count)
             {
