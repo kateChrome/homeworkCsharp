@@ -31,8 +31,8 @@ namespace UnitTestTask2
         public void InsertOnlyUniqueItemsTest()
         {
             var list = new UniqueList<string>();
-            list.Insert(0,"1");
-            list.Insert(1,"1");
+            list.Insert(0, "1");
+            list.Insert(1, "1");
         }
 
         [TestMethod]
@@ -40,9 +40,9 @@ namespace UnitTestTask2
         public void InsertUniqueItemsTest()
         {
             var list = new UniqueList<string>();
-            list.Insert(0,"1");
-            list.Insert(0,"2");
-            list.Insert(0,"1");
+            list.Insert(0, "1");
+            list.Insert(0, "2");
+            list.Insert(0, "1");
         }
     }
 }
