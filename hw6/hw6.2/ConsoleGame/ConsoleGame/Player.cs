@@ -8,8 +8,8 @@ namespace ConsoleGame
     public class Player
     {
         public Map GameMap { set; get; }
-        public (int first, int second) Position { set; get; }
-        public (int first, int second) LastPosition { set; get; }
+        public (int first, int second) Position { private set; get; }
+        public (int first, int second) LastPosition { private set; get; }
 
         public Player(Map map)
         {

@@ -7,8 +7,8 @@ namespace ConsoleGame
     /// </summary>
     public class Map
     {
-        public bool[,] GameMap { set; get; }
-        public (int first, int second) PlayerStartPosition { set; get; }
+        public bool[,] GameMap { get; }
+        public (int first, int second) PlayerStartPosition {  get; }
 
         public Map(bool[,] map, (int first, int second) position)
         {
