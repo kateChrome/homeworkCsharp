@@ -8,7 +8,7 @@ namespace ConsoleGame
     public class Map
     {
         public bool[,] GameMap { get; }
-        public (int first, int second) PlayerStartPosition {  get; }
+        public (int first, int second) PlayerStartPosition { get; }
 
         public Map(bool[,] map, (int first, int second) position)
         {
