@@ -1,8 +1,7 @@
 {
   "profiles": {
     "ConsoleGame": {
-      "commandName": "Project",
-      "commandLineArgs": "../../../maps/map0"
+      "commandName": "Project"
     }
   }
 }
