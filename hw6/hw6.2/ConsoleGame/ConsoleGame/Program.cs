@@ -9,17 +9,21 @@ namespace ConsoleGame
     {
         public static void Main(string[] args)
         {
-            string pathToMap;
-            do
+            var pathToMap = "map0";
+            if (args.Length == 1)
+            {
+                pathToMap = args[0];
+            }
+            while (!File.Exists(pathToMap))
             {
                 Console.WriteLine("Enter path to map file: ");
                 pathToMap = Console.ReadLine();
-            } while (!File.Exists(pathToMap));
+            }
             
 
             var input = File.ReadAllText(pathToMap);
 
-            var mapFromFile = new bool[40,40];
+            var mapFromFile = new bool[40, 40];
             var i = 0;
             foreach (var row in input.Split('\n'))
             {

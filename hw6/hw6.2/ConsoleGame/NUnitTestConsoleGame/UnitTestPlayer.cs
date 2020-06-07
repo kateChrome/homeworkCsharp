@@ -28,7 +28,7 @@ namespace NUnitTestConsoleGame
         [Test]
         public void TestAreTheLastAndCurrentPositionsEqualToEachOther()
         {
-            Assert.True(_player.LastPosition == _player.Position);
+            Assert.AreEqual(_player.LastPosition, _player.Position);
         }
 
         [Test]

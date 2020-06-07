@@ -1,4 +1,6 @@
-﻿namespace ConsoleGame
+﻿using System;
+
+namespace ConsoleGame
 {
     /// <summary>
     /// Player class implementation.
@@ -18,29 +20,24 @@
 
         /// <summary>
         /// Change player position.
-        /// Up (false, false)
-        /// Right (false, true)
-        /// Left (true, false)
-        /// Down (true, true)
         /// </summary>
-        public bool TakeOneStep((bool, bool) step)
+        public bool TakeOneStep(EventLoop.Direction step)
         {
             var newPosition = Position;
-            if (step == (false, false))
+            switch (step)
             {
-                newPosition.second--;
-            }
-            else if (step == (false, true))
-            {
-                newPosition.first++;
-            }
-            else if (step == (true, false))
-            {
-                newPosition.first--;
-            }
-            else if (step == (true, true))
-            {
-                newPosition.second++;
+                case EventLoop.Direction.Up:
+                    newPosition.second--;
+                    break;
+                case EventLoop.Direction.Right:
+                    newPosition.first++;
+                    break;
+                case EventLoop.Direction.Left:
+                    newPosition.first--;
+                    break;
+                case EventLoop.Direction.Down:
+                    newPosition.second++;
+                    break;
             }
 
             if (!GameMap.IsCorrectPosition(newPosition))
