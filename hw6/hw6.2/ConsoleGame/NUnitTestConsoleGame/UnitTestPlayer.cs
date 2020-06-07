@@ -35,7 +35,7 @@ namespace NUnitTestConsoleGame
         public void TestLastPositionAfterMove()
         {
             var lastPosition = _player.LastPosition;
-            _player.TakeOneStep((true, true));
+            _player.TakeOneStep(EventLoop.Direction.Down);
             Assert.AreEqual(lastPosition, _player.LastPosition);
         }
 
@@ -44,7 +44,7 @@ namespace NUnitTestConsoleGame
         {
             var position = _player.Position;
             position.first++;
-            _player.TakeOneStep((false, true));
+            _player.TakeOneStep(EventLoop.Direction.Right);
             Assert.AreEqual(position, _player.Position);
         }
 
@@ -52,7 +52,7 @@ namespace NUnitTestConsoleGame
         public void TestIncorrectMove()
         {
             var position = _player.Position;
-            _player.TakeOneStep((false, false));
+            _player.TakeOneStep(EventLoop.Direction.Up);
             Assert.AreEqual(position, _player.Position);
         }
     }
