@@ -42,7 +42,7 @@ namespace ConsoleGame
             eventLoop.RightHandler += game.OnRight;
             eventLoop.LeftHandler += game.OnLeft;
 
-            game.Start();
+            game.Rendering();
             eventLoop.Run();
         }
     }

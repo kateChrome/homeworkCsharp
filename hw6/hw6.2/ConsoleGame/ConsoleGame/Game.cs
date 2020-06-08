@@ -17,18 +17,9 @@ namespace ConsoleGame
         }
 
         /// <summary>
-        /// Starts this game.
-        /// Keyboard input processing and map redrawing.
-        /// </summary>
-        public void Start()
-        {
-            Rendering();
-        }
-
-        /// <summary>
         /// Renderings this game.
         /// </summary>
-        private void Rendering()
+        public void Rendering()
         {
             MapRendering();
             PlayerRendering();
