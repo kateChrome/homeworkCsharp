@@ -33,9 +33,17 @@ namespace ConsoleGame
                 }
                 i++;
             }
-
+            
+            var eventLoop = new EventLoop();
             var game = new Game(mapFromFile, (10, 10));
+
+            eventLoop.DownHandler += game.OnDown;
+            eventLoop.UpHandler += game.OnUp;
+            eventLoop.RightHandler += game.OnRight;
+            eventLoop.LeftHandler += game.OnLeft;
+
             game.Start();
+            eventLoop.Run();
         }
     }
 }

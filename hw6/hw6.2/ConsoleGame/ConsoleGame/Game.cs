@@ -23,11 +23,11 @@ namespace ConsoleGame
         public void Start()
         {
             Rendering();
-            while (true)
+            /*while (true)
             {
-                _player.TakeOneStep(EventLoop.GetDirection());
-                PlayerRendering();
-            }
+                /*_player.TakeOneStep(EventLoop.GetDirection());
+                PlayerRendering();#1#
+            }*/
         }
 
         /// <summary>
@@ -60,6 +60,41 @@ namespace ConsoleGame
 
                 Console.Write(Environment.NewLine);
             }
+        }
+
+        /// <summary>
+        /// Handle keystroke up.
+        /// </summary>
+        public void OnUp(object sender, EventArgs args)
+        {
+            _player.TakeOneStep(EventLoop.Direction.Up);
+            PlayerRendering();
+        }
+
+        /// <summary>
+        /// Handle keystroke down.
+        /// </summary>
+        public void OnDown(object sender, EventArgs args)
+        {
+            _player.TakeOneStep(EventLoop.Direction.Down);
+            PlayerRendering();
+        }
+
+        /// <summary>
+        /// Handle keystroke left.
+        /// </summary>
+        public void OnLeft(object sender, EventArgs args)
+        {
+            _player.TakeOneStep(EventLoop.Direction.Left);
+            PlayerRendering();
+        }
+        /// <summary>
+        /// Handle keystroke right.
+        /// </summary>
+        public void OnRight(object sender, EventArgs args)
+        {
+            _player.TakeOneStep(EventLoop.Direction.Right);
+            PlayerRendering();
         }
 
         /// <summary>

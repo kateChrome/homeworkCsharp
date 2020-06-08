@@ -15,7 +15,15 @@ namespace ConsoleGame
             Down
         }
 
-        public static Direction GetDirection()
+        public event EventHandler<EventArgs> LeftHandler = (sender, args) => { };
+        public event EventHandler<EventArgs> RightHandler = (sender, args) => { };
+        public event EventHandler<EventArgs> UpHandler = (sender, args) => { };
+        public event EventHandler<EventArgs> DownHandler = (sender, args) => { };
+
+        /// <summary>
+        /// Keystroke handling and creating events.
+        /// </summary>
+        public void Run()
         {
             while (true)
             {
@@ -24,19 +32,23 @@ namespace ConsoleGame
                 {
                     case ConsoleKey.UpArrow:
                     {
-                        return Direction.Up;
+                        LeftHandler(this, EventArgs.Empty);
+                        break;
                     }
                     case ConsoleKey.RightArrow:
                     {
-                        return Direction.Right;
+                        RightHandler(this, EventArgs.Empty);
+                        break;
                     }
                     case ConsoleKey.LeftArrow:
                     {
-                        return Direction.Left;
+                        UpHandler(this, EventArgs.Empty);
+                        break;
                     }
                     case ConsoleKey.DownArrow:
                     {
-                        return Direction.Down;
+                        DownHandler(this, EventArgs.Empty);
+                        break;
                     }
                 }
             }

@@ -25,13 +25,13 @@
             switch (step)
             {
                 case EventLoop.Direction.Up:
-                    newPosition.second--;
+                    newPosition.first--;
                     break;
                 case EventLoop.Direction.Right:
                     newPosition.first++;
                     break;
                 case EventLoop.Direction.Left:
-                    newPosition.first--;
+                    newPosition.second--;
                     break;
                 case EventLoop.Direction.Down:
                     newPosition.second++;
