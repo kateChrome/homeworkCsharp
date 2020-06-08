@@ -8,7 +8,7 @@ namespace Set
     {
         public static void Main(string[] args)
         {
-            var set = new Set<string>(new DefaultComparer<string>(), false)
+            var set = new Set<string>(new DefaultComparer<string>())
             {
                 "111",
                 "222",

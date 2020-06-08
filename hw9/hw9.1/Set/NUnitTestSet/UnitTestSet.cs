@@ -9,12 +9,12 @@ namespace NUnitTestSet
     public class Tests
     {
         private Set<string> set;
-        string[] testArray = new string[] {"111", "222", "333"};
+        private string[] testArray = new string[] {"111", "222", "333"};
 
         [SetUp]
         public void Setup()
         {
-            set = new Set<string>(new DefaultComparer<string>(), false);
+            set = new Set<string>(new DefaultComparer<string>());
         }
 
         [Test]
@@ -30,16 +30,6 @@ namespace NUnitTestSet
             set.Add("111");
             set.Clear();
             Assert.AreEqual(0, set.Count);
-        }
-
-        [Test]
-        public void TestClearInReadOnly()
-        {
-            set = new Set<string>(new DefaultComparer<string>(), true)
-            {
-                "111"
-            };
-            Assert.Throws<NotSupportedException>(() => set.Clear());
         }
 
         [Test]
@@ -354,18 +344,6 @@ namespace NUnitTestSet
             }
 
             Assert.False(set.Remove("1337"));
-        }
-
-        [Test]
-        public void TestRemoveFromReadOnly()
-        {
-            var setReadOnly = new Set<string>(new DefaultComparer<string>(), true);
-            for (var i = 0; i < 10; i++)
-            {
-                setReadOnly.Add(i.ToString());
-            }
-
-            Assert.Throws<NotSupportedException>(() => setReadOnly.Remove("2"));
         }
 
         [Test]

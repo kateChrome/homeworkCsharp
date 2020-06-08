@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace Set
 {
+    /// <summary>
+    /// This class provides methods for implementing collections, which are collections that have unique elements and specific operations.
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.ISet{T}" />
     public class Set<T> : ISet<T>
     {
         private class SetElement : IEnumerable<T>
@@ -46,22 +50,21 @@ namespace Set
         }
 
         public int Count { set; get; }
-        public bool IsReadOnly { set; get; }
+        public bool IsReadOnly => false;
 
         private SetElement? _root;
         private readonly IComparer<T> _comparer;
 
-        public Set(IComparer<T> comparer, bool isReadOnly)
+        public Set(IComparer<T> comparer)
         {
             this.Count = 0;
-            this.IsReadOnly = isReadOnly;
             this._comparer = comparer;
         }
 
         private (SetElement? currentSetElement, SetElement? parentSetElement)
             FindCurrentElementAndThemParent(T data)
         {
-            SetElement? currentSetElement = _root;
+            var currentSetElement = _root;
             var parentSetElement = _root;
 
             while (currentSetElement != null)
@@ -117,11 +120,6 @@ namespace Set
 
         public void Clear()
         {
-            if (IsReadOnly)
-            {
-                throw new NotSupportedException("The ICollection object is read-only.");
-            }
-
             this._root = null;
             this.Count = 0;
         }
@@ -157,6 +155,10 @@ namespace Set
             {
                 throw new ArgumentNullException($"Array {nameof(other)} is a null.");
             }
+            else if (other == null)
+            {
+                throw new ArgumentNullException($"the iterable collection cannot be changed in this method.");
+            }
 
             foreach (var item in other)
             {
@@ -174,7 +176,7 @@ namespace Set
                 throw new ArgumentNullException($"Array {nameof(other)} is a null.");
             }
 
-            var temporarySet = new Set<T>(_comparer, IsReadOnly);
+            var temporarySet = new Set<T>(_comparer);
 
             foreach (var item in other)
             {
@@ -227,7 +229,7 @@ namespace Set
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
             }
 
-            var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
+            var comparedSet = new Set<T>(this._comparer);
 
             return other.All(item => this.Contains(item) && comparedSet.Add(item));
         }
@@ -315,7 +317,7 @@ namespace Set
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
             }
 
-            var comparedSet = new Set<T>(this._comparer, this.IsReadOnly);
+            var comparedSet = new Set<T>(this._comparer);
 
             if (other.Any(item => !this.Contains(item) || !comparedSet.Add(item)))
             {
@@ -346,6 +348,10 @@ namespace Set
             if (other == null)
             {
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
+            }
+            else if (other == null)
+            {
+                throw new ArgumentNullException($"the iterable collection cannot be changed in this method.");
             }
 
             foreach (var item in other)
