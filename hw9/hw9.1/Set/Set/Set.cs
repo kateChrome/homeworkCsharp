@@ -155,7 +155,7 @@ namespace Set
             {
                 throw new ArgumentNullException($"Array {nameof(other)} is a null.");
             }
-            else if (other == null)
+            else if (other == this)
             {
                 throw new ArgumentNullException($"the iterable collection cannot be changed in this method.");
             }
@@ -349,7 +349,7 @@ namespace Set
             {
                 throw new ArgumentNullException($"{nameof(other)} is a null.");
             }
-            else if (other == null)
+            else if (other == this)
             {
                 throw new ArgumentNullException($"the iterable collection cannot be changed in this method.");
             }
