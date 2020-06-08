@@ -23,11 +23,6 @@ namespace ConsoleGame
         public void Start()
         {
             Rendering();
-            /*while (true)
-            {
-                /*_player.TakeOneStep(EventLoop.GetDirection());
-                PlayerRendering();#1#
-            }*/
         }
 
         /// <summary>
